@@ -1,0 +1,77 @@
+<style>
+  .dataTypeForm {
+    width: 275px;
+  }
+  .orangebutton {
+    background-color: #d69900;
+    width: 200px;
+    height: 40px;
+    border: none;
+    font-family: Michroma;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 4px;
+    padding-bottom: 5px;
+    margin-top: 30px;
+  }
+  .inputText {
+    margin-top: 30px;
+    font-size: 15px;
+  }
+  .inputfield {
+    background-color: #dddddd;
+    height: 40px;
+    width: 200px;
+    margin: auto;
+    border-color: black;
+    border-shadow: none;
+    border-width: 1px;
+    box-shadow: 0 0 0 0 rgb ( 0 0 0 1);
+    font-size: 15px;
+    color: grey;
+  }
+  .centerField{
+    margin: auto;
+  }
+</style>
+<link href="http://fonts.googleapis.com/css?family=Michroma:400&amp;subset=latin,cyrillic-ext,greek-ext,greek,latin-ext,cyrillic" type="text/css" rel="stylesheet">
+
+<div class="container" style="margin-top: 50px;">
+  <div class="col-sm-12 col-sm-offset-4">
+    <% if flash[:notice] -%>
+        <p class="notice"><%= flash[:notice] %></p>
+    <% end -%>
+    <% if flash[:error] -%>
+        <p class="error"><%= flash[:error] %></p>
+    <% end -%>
+    <% if @user.errors.full_messages.any? %>
+        <% @user.errors.full_messages.each do |error_message| %>
+            <%= error_message if @user.errors.full_messages.first == error_message %> <br/>
+        <% end %>
+    <% end %>
+
+    <div id='' class='dataTypeForm' data-type='Form' style="z-index:1;border-width:1px;border-color:#000;border-style:solid;background-color:#CCCCCC;opacity:1;
+        filter:alpha(opacity=100);
+        box-shadow:0px 0px 0px 0px rgba(0, 0, 0, 1);
+        -moz-box-shadow:0px 0px 0px 0px rgba(0, 0, 0, 1);
+        -webkit-box-shadow:0px 0px 0px 0px rgba(0, 0, 0, 1);
+        position:absolute; padding-bottom: 20px;">
+    <%= form_for @user, url: login_forgot_path do |f| %>
+        <div  class="row-centered">
+          Retrieve a temporary password
+          <div class="form-group text-center inputText">
+            User Name/Email
+          </div>
+
+          <div class="form-group text-center">
+            <%= f.text_field :userid, :class => 'inputfield' %><br>
+          </div>
+          <div class="text-center">
+          <%= f.submit 'Submit', :class => 'orangebutton' %>
+            </div>
+        </div>
+
+    <% end %>
+  </div>
+</div>
+  </div>

@@ -1,0 +1,17 @@
+
+
+<%= form_for(@posttable) do |f| %>
+    <%= f.label 'Email Address' %>
+    <%= f.text_field :address_1 %><br>
+    <%= f.label 'Email Address' %>
+    <%= f.text_field :address_1 %><br>
+    <%= f.label 'Phone Number' %>
+    <%= f.text_field :phone %><br>
+
+    <%= f.label 'Post Title' %>
+    <%= f.text_field :posting_name %>
+    <%= f.label 'Price' %>
+    <%= f.text_field :posting_price %>
+    <%= f.label 'Post Body' %>
+    <%= f.text_field :post_description %>
+<% end %>

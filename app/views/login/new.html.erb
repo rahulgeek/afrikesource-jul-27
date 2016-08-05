@@ -1,0 +1,122 @@
+<div class="container" style="margin-top: 50px;">
+
+  <% if @user.errors.full_messages.any? %>
+      <% @user.errors.full_messages.each do |error_message| %>
+          <%= error_message if @user.errors.full_messages.first == error_message %> <br/>
+      <% end %>
+  <% end %>
+  <link href="http://fonts.googleapis.com/css?family=Michroma:400&amp;subset=latin,cyrillic-ext,greek-ext,greek,latin-ext,cyrillic" type="text/css" rel="stylesheet">
+  <style>
+    .dataTypeForm {
+      width: 250px;
+    }
+    .inputText {
+      margin-top: 30px;
+      font-size: 15px;
+    }
+    .inputfield {
+      background-color: #dddddd;
+      height: 40px;
+      width: 200px;
+      margin: auto;
+      border-color: black;
+      border-shadow: none;
+      border-width: 1px;
+      box-shadow: 0 0 0 0 rgb ( 0 0 0 1);
+      font-size: 15px;
+      color: grey;
+    }
+    .centerField{
+    margin: auto;
+    }
+      .orangebutton {
+        background-color: #d69900;
+        width: 200px;
+        height: 40px;
+        border: none;
+        font-family: Michroma;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 4px;
+        padding-bottom: 5px;
+        margin-top: 30px;
+      }
+      .passwordHelp, .passwordHelp:hover {
+        color: red;
+        font-family: Michroma;
+        margin: auto;
+        width: 200px;
+        text-decoration: none;
+      }
+      .signUp, .signUp:hover {
+        color: blue;
+        font-family: Michroma;
+      }
+  </style>
+  <div class="" style="margin: 0 auto;">
+  <% if flash[:notice] -%>
+      <p class="notice text-centered" style="margin: auto;"><%= flash[:notice] %></p>
+  <% end -%>
+  <% if flash[:error] -%>
+      <p class="error text-centered" style="margin: auto;"><%= flash[:error] %></p>
+  <% end -%>
+
+  <div id='' class='dataTypeForm' data-type='Form' style="margin: 0 auto;z-index:1;border-width:1px;border-color:#000;border-style:solid;background-color:#CCCCCC;opacity:1;
+      filter:alpha(opacity=100);
+      box-shadow:0px 0px 0px 0px rgba(0, 0, 0, 1);
+      -moz-box-shadow:0px 0px 0px 0px rgba(0, 0, 0, 1);
+      -webkit-box-shadow:0px 0px 0px 0px rgba(0, 0, 0, 1);
+      overflow:hidden;">
+    <div class="row-centered" style="background-color: #cccccc; ">
+      <%= form_for @user, url: authorize_user_path do |f| %>
+            <div class="form-group text-center inputText">
+              <%= t(:user_name) %>
+            </div>
+          <div class="text-centered">
+            <div class="form-group text-centered inputfield">
+              <input id="userId" type='text' class="inputfield" name='user_table[userid]'>
+            </div>
+          </div>
+          <div id="userid_message" class="text-centered inputText" style="visibility:hidden;">
+
+          </div>
+          <div class="form-group text-center inputText">
+            <%= t(:password) %>
+          </div>
+          <div class="row-centered">
+            <div class="form-group text-centered inputfield">
+              <input id="userPassword" type='password' class='inputfield' name="user[password]">
+            </div>
+          </div>
+          <div id="password_message" class="text-centered inputText" style="visibility:hidden;">
+
+          </div>
+          <div class="row-centered">
+            <div class="form-group text-center">
+              <%= f.submit t(:submit), :class=> 'orangebutton' %></br>
+            </div>
+          </div>
+          <div class="row-centered">
+            <div class="form-group text-center checkbox">
+              <label>
+                <input type="checkbox" name="user[remember]"><%= t(:remember) %>
+              </label>
+            </div>
+          </div>
+
+
+          <div class="row-centered">
+            <div class="form-group text-center">
+              <%= link_to t(:password_help), login_forgot_form_path, :class => 'passwordHelp text-center' %>
+            </div>
+          </div>
+          <div class="row-centered">
+            <div class="form-group text-center">
+              <%= link_to t(:sign_up).capitalize, login_sign_up_path, :class => 'signUp'  %>
+            </div>
+          </div>
+      <% end %>
+      </div>
+</div>
+</div>
+</div>

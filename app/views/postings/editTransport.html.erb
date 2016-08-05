@@ -1,0 +1,12 @@
+<div class="col-sm-10 col-sm-offset-2">
+  <h1><%= t(:edit_transport) %></h1>
+  <% @url = posting_update_transport_type_path %>
+  <% @method = 'post' %>
+  <%= render 'partials/transport_form' %>
+  <div class="col-sm-12">
+    <%= link_to 'Show', @transport %> |
+    <%= link_to 'Edit Address', posting_edit_address_path %> |
+    <%= link_to t(:edit_image_list), posting_edit_images_path(@posting[:id]), method: 'get', class: 'btn btn-info' %> |
+    <%= link_to t(:back), postings_path %>
+  </div>
+</div>

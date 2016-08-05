@@ -1,0 +1,15 @@
+<ul class="nav nav-pills">
+
+    <li><%= link_to '<i class="glyphicon glyphicon-home" ></i>'.html_safe, pages_show_path %>
+    </li>
+    <li><%= link_to t(:your_postings), postings_path %>
+    </li>
+    <li><%= link_to t(:new_post), posting_types_path %>
+    </li>
+    <li><a href="#"><%= t(:pay) %></a>
+    </li>
+    <li><%= link_to t(:profile), edit_login_path(session[:user_id]) %>
+    </li>
+    <li><%= link_to t(:logout), logout_path %>
+    </li>
+</ul>

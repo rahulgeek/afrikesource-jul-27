@@ -1,0 +1,151 @@
+<style>
+  .form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    border: 0px solid;
+    border-radius: 0;
+    background-color: #dddddd;
+    color: grey;
+  }
+    .button {
+      background-color: cornflowerblue;
+      width: 100px;
+      border-radius: 0px;
+     }
+</style>
+<%= form_for(@user, html: {class: 'form-horizontal'}, method: :patch, url: @user_path, validate: true) do |f| %>
+    <div class="col-sm-5 col-sm-offset-1">
+      <div class="form-group">
+<% if action_name == 'sign_up' || (action_name== 'edit' && session[:level] == '200' || session[:level] == '300') %>
+      <%= f.radio_button(:enterprise, 0, {checked: true }) %>
+      <%= label_tag :personal, t(:personal) %><br>
+      <%= f.radio_button(:enterprise, 1) %>
+      <%= label_tag :professional, t(:professional) %>
+<% else %>
+          <%= t(:account_type) %>:
+      <% if @user[:enterprise] == 1 %>
+          <%= t(:professional) %>
+    <% else %>
+              <%= t(:personal) %>
+  <% end %>
+<% end %>
+        </div>
+      <div class="form-group text-center inputText">
+        <%#= t :business_name %>
+      </div>
+      <div class='form-group'>
+        <%#= f.text_field :business, class: 'form-control' %>
+      </div>
+      <div class="form-group text-center inputText">
+        <%= t :name %>
+      </div>
+      <div class='form-group'>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+      <div class="form-group text-center inputText">
+        <%= t :last_name %>
+      </div>
+      <div class='form-group'>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group text-center inputText">
+        Email
+      </div>
+      <div class='form-group'>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+      <div class="form-group text-center inputText">
+        <%= t :phone %>
+      </div>
+      <div class='form-group'>
+        <%= f.text_field :phone, class: 'form-control' %>
+      </div>
+
+    </div>
+    <div class="col-sm-5 col-sm-offset-1">
+      <div class="form-group text-center inputText">
+        <%= t :user_name %>
+      </div>
+      <div class='form-group'>
+        <%= f.text_field :userid, class: 'form-control' %>
+      </div>
+      <div class="form-group text-center inputText">
+        <%= t :password %>
+      </div>
+
+      <div class='form-group'>
+        <input id='password' type='password' name="user[password]" class="form-control">
+        </input>
+      </div>
+      <div class="form-group text-center inputText">
+        <%= t :confirm_password %>
+      </div>
+      <div class='form-group'>
+        <input id='password_confirm' type='password' name="user[password_confirm]" class="form-control">
+        </input>
+      </div>
+        <% if session[:level] == '300' %>
+          <div class="form-group">
+            <%= f.label :level, :class => 'col-sm-3' %>
+            <%= f.select(:level,
+                         options_for_select([['User', nil], ['Vendor', '200'], ['Admin', '300']], @user.level.to_s),
+                         {},
+                         {:class => 'form-control contact_select col-sm-3'}) %>
+          </div>
+        <% end %>
+        <% if session[:level] == '200' %>
+          <div class="form-group">
+            <%= f.label :level, :class => 'col-sm-3' %>
+            <%= f.select(:level,
+                         options_for_select([['User', nil], ['Admin', '200']], @user.level.to_s),
+                         {},
+                         {:class => 'form-control contact_select col-sm-3'}) %>
+          </div>
+        <% end %>
+      <div class="form-group text-center inputText">
+        <%= t :country %>
+      </div>
+
+      <div class='form-group'>
+        <%= f.select(:country,
+                     options_for_select([['United States', 'US'],
+                                         ['France', 'FR'],
+                                         ['Senegal', 'SN'],
+                                         ['Mali', 'ML'],
+                                         ['Guyana', 'GY'],
+                                         ['Ivory Coast', 'CI']], @user.country.to_s),
+                     {},
+                     {:class => 'form-control contact_select col-sm-3'}) %>
+      </div>
+      <div class="form-group text-center inputText">
+        <%= t :phone_type %>
+      </div>
+      <div class='form-group'>
+        <%= f.select(:phone_type,
+                     options_for_select([['Apple', 'AP'],
+                                         ['Android', 'AN'],
+                                         ['Dumb', 'DB']], @user.phone_type.to_s),
+                     {},
+                     {:class => 'form-control contact_select col-sm-3'}) %>
+      </div>
+      <div class="form-group">
+        <%#= t :logo_file %>
+
+        <%#= image_tag @user.logo_url(:thumb).to_s %>
+      </div>
+      <div class='form-group'>
+        <%= f.file_field :logo %>
+      </div>
+    </div>
+
+    <div class='col-sm-12 col-sm-offset-7'>
+      <% if @user.persisted? %>
+          <%= f.submit t(:update), class: 'btn btn-default button' %>
+      <% else %>
+          <%= f.submit t :submit, class: 'btn btn-default button' %>
+      <% end %>
+    </div>
+<% end %>

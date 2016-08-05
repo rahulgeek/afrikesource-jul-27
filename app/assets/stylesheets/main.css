@@ -1,0 +1,375 @@
+
+.inline {
+    display: inline !important;
+}
+.show-parallax.fit_to_bg_new {
+    left: 0 !important;
+}
+@font-face {
+    font-family: "Alef Hebrew";
+    font-style: normal;
+    font-weight: 400;
+    src: url("//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Regular.eot?#iefix") format("embedded-opentype"), url("//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Regular.woff2") format("woff2"), url("//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Regular.woff") format("woff"), url("//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Alef Hebrew";
+    font-style: normal;
+    font-weight: 700;
+    src: url("//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Bold.eot?#iefix") format("embedded-opentype"), url("//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Bold.woff2") format("woff2"), url("//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Bold.woff") format("woff"), url("//fonts.gstatic.com/ea/alefhebrew/v4/Alef-Bold.ttf") format("truetype");
+}
+div.text_editor_resets li {
+    margin: 0 2em !important;
+}
+div.text_editor_resets img {
+    height: auto;
+    max-width: 100%;
+}
+html {
+}
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, em, img, strong, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tfoot, thead, th, button {
+    background: transparent none repeat scroll 0 0;
+    border: 0 none;
+    font-size: 100%;
+    line-height: 100%;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline;
+}
+div[data-type="Form"] div[data-type="RadioButton"] span, div[data-type="Form"] div[data-type="CheckBox"] span {
+    display: inline-block;
+}
+div.text_editor_resets div ul > li h1, div.text_editor_resets div ul > li h2, div.text_editor_resets div ul > li h3, div.text_editor_resets div ul > li h4, div.text_editor_resets div ul > li h5, div.text_editor_resets div ul > li p {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+div.text_editor_resets div ol > li h1, div.text_editor_resets div ol > li h2, div.text_editor_resets div ol > li h3, div.text_editor_resets div ol > li h4, div.text_editor_resets div ol > li h5, div.text_editor_resets div ol > li p {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+body {
+    font-family: Arial,Verdana;
+    font-size: 11px;
+    height: auto;
+    margin: 0;
+    min-height: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+p {
+    font-size: 14px;
+    margin: 0;
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    font-weight: normal;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    font-weight: normal;
+}
+h3 {
+    display: block;
+    font-size: 1.17em;
+    font-weight: normal;
+}
+h4 {
+    display: block;
+    font-weight: normal;
+}
+.menu {
+    font-family: arial,sans-serif;
+    font-size: 11px;
+    overflow: visible;
+    position: absolute;
+}
+.menu ul li a, .menu ul li a:visited {
+    display: block;
+}
+.menu ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.fixed {
+    position: fixed !important;
+}
+.menu.left ul li {
+    clear: none;
+    float: left;
+    position: relative;
+}
+.menu.right ul li {
+    clear: none;
+    direction: rtl;
+    float: right;
+    position: relative;
+}
+.menu.left.horizontal ul li {
+    clear: none;
+    cursor: pointer;
+    float: left;
+    position: relative;
+}
+.menu.left.vertical ul li {
+    cursor: pointer;
+    float: none;
+    position: relative;
+}
+.menu.right.horizontal ul li {
+    clear: none;
+    cursor: pointer;
+    direction: rtl;
+    float: right;
+    position: relative;
+}
+.menu.right.vertical ul li {
+    cursor: pointer;
+    direction: rtl;
+    float: none;
+    position: relative;
+}
+.sub-menu {
+    clear: both;
+    display: none;
+    left: 0;
+    position: absolute;
+    width: auto;
+}
+.leftArrow {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 65px;
+    z-index: 8040;
+}
+.rightArrow {
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 65px;
+    z-index: 8040;
+}
+.imagepopup_leftArrow {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 8040;
+}
+.imagepopup_rightArrow {
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 8040;
+}
+.imagepopup_overlay_fixed {
+    bottom: 0;
+    position: fixed;
+    right: 0;
+}
+.imagepopup_overlay {
+    background: rgba(0, 0, 0, 0) url("http://images.design-editor.com/-1/imagepopup/imagepopup_overlay.png") repeat scroll 0 0;
+    display: none;
+    left: 0;
+    overflow: hidden;
+    top: 0;
+    z-index: 99999999;
+}
+.imagepopup_opened {
+    z-index: 8030;
+}
+.imagepopup_wrap {
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 8020;
+}
+.imagepopup_opened .imagepopup_skin {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+.imagepopup_skin {
+    background: #f9f9f9 none repeat scroll 0 0;
+    border-radius: 4px;
+    color: #444;
+    position: relative;
+    text-shadow: none;
+}
+.imagepopup_outer, .imagepopup_inner {
+    position: relative;
+}
+.imagepopup_opened .imagepopup_title {
+    visibility: visible;
+}
+.imagepopup_title_float_wrap {
+    position: absolute;
+    text-align: center;
+    z-index: 8050;
+}
+.imagepopup_title_float_wrap .imagepopup_title_text {
+    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+    border-radius: 15px;
+    color: #fff;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 24px;
+    margin: 10px auto;
+    padding: 2px 20px;
+    text-shadow: 0 1px 2px #111;
+    white-space: nowrap;
+}
+.imagepopup_title {
+    font: 13px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin-bottom: -35px;
+    position: absolute;
+    text-shadow: none;
+    visibility: hidden;
+    z-index: 8050;
+}
+.imagepopup_close {
+    background: rgba(0, 0, 0, 0) url("http://images.design-editor.com/-1/imagepopup/close_btn.png") no-repeat scroll 0 0;
+    cursor: pointer;
+    height: 36px;
+    position: absolute;
+    right: -18px;
+    top: -16px;
+    width: 36px;
+    z-index: 8040;
+}
+div.text_editor_resets ul, div.text_editor_resets ol {
+    margin: 0;
+}
+/*div.text_editor_resets ul, div.text_editor_resets ul > li {
+    list-style: outside none disc !important;
+} */
+div.text_editor_resets ol, div.text_editor_resets ol > li {
+    list-style: outside none decimal !important;
+}
+.image_wa {
+}
+iframe.widget_iframe {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+.pointer {
+    cursor: pointer;
+}
+.max_width_height {
+    height: 100%;
+    width: 100%;
+}
+.gallery_con * {
+    visibility: inherit;
+}
+.innerMainPanel0 {
+    height: 100%;
+    width: 100%;
+}
+.generalSitebackgroundDiv {
+    height: 100%;
+    width: 100%;
+}
+.none_important {
+    display: none !important;
+}
+.block_important {
+    display: block !important;
+}
+.mobile {
+    display: none;
+}
+.mobile nav {
+}
+.mobile .mobile-menu {
+}
+.mobile nav ul {
+    height: auto;
+    position: static;
+    width: 100%;
+}
+.mobile nav ul li {
+    clear: both !important;
+    float: none !important;
+    height: auto;
+    width: 100%;
+}
+.mobile-menu-parent, .mobile-menu-parent:hover {
+}
+.mobile nav ul li a, .mobile nav ul li a:hover, .mobile nav ul li a:active, .mobile nav ul li a:link {
+    padding-bottom: 10px;
+}
+.mobile-toggle {
+    cursor: pointer;
+}
+.mobile .mobile-menu-children {
+    display: none;
+}
+.mobile button {
+    background: rgba(0, 0, 0, 0) url("http://images5.design-editor.com/-1/MobileMenu/mobile_menu_arrow_side.png") no-repeat scroll 50% 50%;
+    border-left-color: inherit;
+    border-left-style: solid;
+    border-left-width: 1px;
+    cursor: pointer;
+    height: 40px;
+    padding-left: 10%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 45px;
+    z-index: 900002;
+}
+.mobile button.open {
+    background: rgba(0, 0, 0, 0) url("http://images5.design-editor.com/-1/MobileMenu/mobile_menu_arrow_down.png") no-repeat scroll 50% 50%;
+}
+.mobile-rtl button {
+    background: rgba(0, 0, 0, 0) url("http://images5.design-editor.com/-1/MobileMenu/mobile_menu_arrow_side_rtl.png") no-repeat scroll 50% 50%;
+    border-left: medium none;
+    border-right-color: inherit;
+    border-right-style: solid;
+    border-right-width: 1px;
+    left: 0;
+    right: auto;
+}
+.mobile-menu .x4 li {
+    text-indent: 45px;
+}
+.mobile-menu .x5 li {
+    text-indent: 60px;
+}
+.mobile-menu .x6 li {
+    text-indent: 75px;
+}
+.mobile-menu .x7 li {
+    text-indent: 90px;
+}
+.mobile-menu .x8 li {
+    text-indent: 105px;
+}
+.backgroundAttachmentFixed {
+    background-attachment: fixed;
+}
+.maskLinkTo {
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+:not(.image_text_caption) > .imageTextCaption {
+    pointer-events: none;
+}

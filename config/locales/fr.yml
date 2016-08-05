@@ -1,0 +1,203 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+fr:
+  blurb: "1er site de Geomarketing and de Transfer d'Argent de la Diaspora vers l'Afrique"
+  hello: "Hello world"
+  post: "Publier une annonce"
+  address: "Adresse ou position sur la carte"
+  search: "Que recherchez vous?"
+  explore: "Naviguer"
+  market: "BOUTIQUE"
+  translate: "English"
+  login: 'Se connecter'
+  login2: "mon compte"
+  setup: 'Creer un compte'
+  setup2: "S'incrire"
+  animals: "ANIMAUX/AGRO"
+  appliances: "ELECTROMENAGER"
+  automobile: "VÉHICULES"
+  hotels: "HOTELS"
+  electronics: "ELECTRONIQUES"
+  clothing: "MODE"
+  furniture: "MEUBLES"
+  sports: "SPORTS"
+  auto_rental: "VOITURE DE LOCATION"
+  courier: "COURSIER"
+  transportation: "COVOITURAGE"
+  beauty: "BEAUTÉ ET SANTÉ"
+  jobs: "EMPLOI/SERVICES"
+  miscellaneous: "DIVERS"
+  tourism: "TOURISME"
+  events: "Evenements"
+  services: "SERVICES"
+  auto_parts: "PIÈCES DETTACHÉES"
+  computers: "INFORMATIQUE"
+  cellphones: "TÉLÉPHONE/TABLETTES"
+  tv_audio: "TV/AUDIO"
+  about: "QUI SOMMES NOUS"
+  terms: "Mentions Legales"
+  privacy: "Politique de Confidentialite"
+  real_estate: "IMMOBILIER"
+  posting_message: "Choisissez la categorie pour votre annonce"
+  price: "Prix"
+  logout: "Se deconnecter"
+  image_files: "Ajouter des photos de larticle"
+  equipment: "ÉQUIPEMENT"
+  reset_map: "CARTE RESET"
+  refund_policy: 'Politique de remboursement'
+  transport_error: "interdit ce transport d'être sauvés:"
+  sign_up: 'Creer un compte'
+  sign_up2: "S'incrire"
+  FAQ: 'FAQ'
+  land: 'TERRAINS'
+  bedbreakfast: "CHAMBRE D'HOTE"
+  noposting: "Vous devez creer un compte professionel pour poster sur Boutique"
+  notfound: 'Posting not found'
+  contact: 'Contactez nous'
+
+  update_descriptions: 'Descriptions de mise à jour'
+  reply: 'Répondre'
+  share: 'Partager'
+  category: 'Categorie'
+  post_title: "Titre de l'annonce"
+  enable_sharing: 'Permettre le partage par email'
+  post_body: "Description de l'annonce"
+  post_market_body: "Description de votre entreprises, vos services et produits"
+  post_event_body: "Description de l'evenement"
+  show_posting_market_body: "Description de l'entreprise, des services et produits"
+  market_posting_message: "Vous etes en train de publier dans 'boutique' ou 'evenement' et si vous souhaitez poster ailleurs, vous devez utiliser un compte regulier"
+  image_title: 'Petite description et prix'
+  append_files: 'Permettre aux utilisateurs de vous contacter per email'
+  model: 'Modéle'
+  make: 'Marque'
+  mileage: 'Kilometrage'
+
+  view_full: "Visualiser l'annonce"
+
+  author: 'Autheur'
+  phone: 'Téléphone'
+  view_map: 'Visualiser sur la carte'
+
+  posting: 'Annonces'
+  new_post: 'Nouvelle Annonce'
+  pay: 'Payer'
+  profile: 'Profil'
+  approved: 'Validee'
+  username: "Nom d'utilisateur"
+  password: 'Mot de passe'
+  submit: 'Valider'
+  update: 'Mettre a jour'
+
+  name: 'Prénom'
+  last_name: 'Nom de Famille'
+  phone: 'Numero de telephone'
+  user_name: "Nom d'utilsateur"
+  password: 'Mot de passe'
+  confirm_password: 'Confirmer mot de passe'
+  country: 'Pays'
+  phone_type: 'Marque telephone'
+  logo_file: 'Logo en option pour le page de boutiques'
+
+  new_transport: 'Convoiturage'
+  title: "Titre de l'annonce"
+  posting_price: 'Prix'
+  transportation_price: 'Cout du trajet'
+  space: 'Espaces disponibles'
+
+  from: 'De'
+  to: 'A'
+  submit: 'Valider'
+  remember: ''
+  password_help: 'Mot de passe oublié?'
+  new_address: "Position de l'annonce sur la carte"
+  address_placeholder: "Deplacer le A sur la carte jusqu'a la position ou vous souhaite faire apparaitre l'annonce. Et écrivez l'addresse."
+  logo_option: 'Logo en option pour la page de boutiques'
+
+  account: 'Compte'
+  posting: "L'annonce"
+  postings: 'Annonces'
+  your_postings: 'Vos Annonces'
+  personal: 'Particulier'
+  professional: 'Professionnel'
+
+  address_info: 'Trouver une adresse, une position ou un lieu specifique comme "Tour Eiffel".'
+  search_info: 'Recherercher un produit ou des services dans nos annonces.'
+  explore_info: 'Retrouver des Banques, restaurant, station services, etc dans vos alentours'
+  market_info: 'Consultez les differents produits et services offerts par les entreprises'
+  event_info: 'Retrouver les concerts, boite de nuits, fetes religieuses et autres evenements qui auront lieu dans votre region'
+
+  edit_address: 'Modifier adresse'
+  edit_transport: 'Modifier Convoiturage'
+  account_type: 'Type de compte'
+  business_name: "Nom d' entreprise"
+
+  missing_address: 'Adresse Manquante'
+  missing_address_click: 'Adresse clic manquant pour ajouter'
+
+  apartment: 'APPARTEMENTS'
+  houses_condos: 'MAISONS & VILLAS'
+  offices_warehouse: 'BUREAUX ET MAGASINS'
+
+  housing: 'Immoblier'
+  for_sale: 'A vendre'
+  job_gigs: 'Emplois et Services'
+  services: 'Services'
+  reset_map: 'Reinitialiser la carte'
+
+  next: 'Suivant'
+  back: 'Derriere'
+  edit: 'Modifier'
+  delete: 'Effacer'
+  foundation: 'Foundation'
+  save: 'Sauvegarder'
+  edit_image_list: "Modifier liste d'images"
+  add_files: 'Ajouter des fichiers'
+
+  training_course: 'FORMATION & COURS'
+  domestic_services: 'SERVICES DOMESTIQUES'
+  job_search: "RECHERCHE D'EMPOI"
+  job_offer: "OFFRES D'EMPLOI"
+
+  address_title: "Position de l'annonce sur la carte"
+
+  thank_you: 'Merci'
+  posting_submitted: "Votre annonce a été soumis. Donnez nous un peu de temps pour examiner et approuver votre annonce.  Vérifiez votre e-mail pour la confirmation."
+  posting_market_submitted: "Votre annonce a été soumis. Donnez nous un peu de temps pour examiner et approuver votre page.  Vérifiez votre e-mail pour la confirmation."
+
+  drag_message: "Clicker et deplacer le "
+  target_message: " sur la carte jusqu'a la position ou vous souhaitez faire apparaitre l'annonce et ecrivez l'adresse"
+
+  view_posting: "Voir l'annonce complette"
+
+  basic: 'Basic has 1 picture (free)'
+  silver: 'Silver has 5 pictures ($2)'
+  gold: 'Gold has 5 pictures and a colored pin ($5)'
+  platinum: 'Platinum has 10 pictures and a colored pin ($10)'
+
+  pay_bill: 'Payer une facture'
+  advertisement: 'Publicite'
+  urgent: 'A SAISIR'
+  bargain: 'BONNES AFFAIRES'
+
+  errors:
+    messages:
+      blank: 'Ne peut pas être vide'

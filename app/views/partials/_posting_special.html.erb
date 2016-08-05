@@ -1,0 +1,153 @@
+<% javascript_include_tag "blueimp-gallery.js" %>
+<% javascript_include_tag "blueimp-gallery-fullscreen.js" %>
+<% javascript_include_tag "blueimp-gallery-indicator.js" %>
+<div class="col-sm-12">
+  <script>
+    $(document).ready(function () {
+      var gallery;
+      var links = this.getElementsByTagName('img');
+      console.log('links' + links.length);
+      // note that this was changed to full screen
+
+     gallery = blueimp.Gallery(document.getElementById('links').getElementsByTagName('a'),
+          {
+            container: '#blueimp-gallery-carousel',
+            fullScreen: false,
+            carousel: true
+          });
+      $('#blueimp-gallery').data( 'fullScreen', 'false' );
+
+      document.getElementById('links').onclick = function (event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement,
+            link = target.src ? target.parentNode : target,
+            options = {index: link, event: event, fullScreen: true},
+            links = this.getElementsByTagName('a');
+
+        blueimp.Gallery(links, options);
+      };
+      /*
+      $('#links').on('click', 'a', function (event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement,
+            link = target.src ? target.parentNode : target;
+        var index = this.dataset.index;
+        console.log('link clicked');
+        gallery.slide(index);
+        event.stopPropagation();
+        console.log('click stopped!');
+        return false;
+      }); /**/
+    });
+  </script>
+  <%= form_for @posting, :html => {:multipart => true}, url: @url, method: :post do |f| %>
+      <div class="col-sm-12">
+        <div class="form-group col-sm-12">
+          <input type = "button" VALUE= '<%= t :reply%>' onClick="parent.location='mailto:<%= @posting.user_table.email %>?subject=re: <%= @posting.posting_title %>'"
+                 class = 'btn btn-primary'
+                 style ="">
+          <% if !@posting.address.nil? && !@posting.address.hiacode.nil? %>
+              <input type = "button" VALUE= "<%= t :share %>" onClick="parent.location='mailto:?subject= re:<%= @posting.posting_title %>&body=http://www.afrikelist.com/post/postings/showhcode/<%= @posting.address.hiacode %>'"
+                     class = 'btn btn-info'
+                     style ="">
+          <% end %>
+        </div>
+        <% if !@posting.user_table.logo.file.nil? %>
+            <div class="col-sm-1">
+              <%= image_tag @posting.user_table.logo_url(:thumb) %>
+            </div>
+        <% end %>
+        <% if !@posting.user_table.business.nil? %>
+          <div class="form-group col-sm-10"><h1><b><%= @posting.user_table.business %></b></h1></div>
+        <% else %>
+          <div class="form-group col-sm-10"><h1><b><%= @posting.user_table.first_name.capitalize %></b></h1></div>
+        <% end %>
+      </div>
+      <%= f.hidden_field :types %>
+
+      <div class="form-group col-sm-10">
+        <h4><%= @posting.posting_title %></h4>
+      </div>
+
+      <%= f.fields_for :user_table do |fg| %>
+          <div class="form-group col-sm-3">
+            <%= fg.label t(:author) %>
+            <%= @posting.user_table.userid %>
+          </div>
+          <div class="form-group col-sm-3">
+            <%= fg.label t(:phone) %>
+            <%= @posting.user_table.phone %>
+          </div>
+
+      <% end %>
+      <div class="col-sm-12">
+        <div class="form-group col-sm-3">
+          <%= f.label 'Facebook:' %>
+          <%= @posting.url1 %>
+        </div>
+        <div class="form-group col-sm-3">
+          <%= f.label 'Website' %>
+          <%= @posting.url2 %>
+        </div>
+      </div>
+      <div class="col-sm-7 form-group" style="float:left; padding-bottom: 20px;">
+        <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel" style="">
+          <div class="slides" style=""></div>
+          <h3 class="title"></h3>
+          <a class="prev">‹</a>
+          <a class="next">›</a>
+          <a class="play-pause"></a>
+          <ol class="indicator"></ol>
+        </div>
+
+        <div id="blueimp-gallery" class="blueimp-gallery" style="">
+          <div class="slides" style=""></div>
+          <h3 class="title"></h3>
+          <a class="prev">‹</a>
+          <a class="next">›</a>
+          <a class="play-pause"></a>
+          <ol class="indicator"></ol>
+        </div>
+        <div id="links" class="form-group">
+
+          <% @post_attachment.each_with_index do |image, index| %>
+              <div class='' style="display:block;height:50px;width:50px;float:left;">
+                <%= link_to(image_tag(image.image_url(:thumb), height: '50', width: '50'), image.image_url.to_s, :data => {:index => index}, :title => image.description) %>
+                <div class="description" style="display:none;"><%= image.description %></div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="form-group col-sm-5">
+        <% if @posting.types != 'events' %>
+          <%= f.label t(:show_posting_market_body) %><br>
+        <% else %>
+          <%= f.label t(:post_event_body) %><br>
+        <% end %>
+        <%#= f.text_area :posting_description, class: 'form-control', readonly: true, rows: "10" %>
+          <div><%= @posting[:posting_description] %></div>
+      </div>
+
+      <div class=" col-sm-12">
+        <%= f.fields_for :address do |ff| %>
+            <div class="col-lg-10">
+              <div class="form-group">
+                <%= ff.label 'Address:' %>
+                <%= @posting.address.address_1 %>
+                <%#= ff.text_field :address_1, class: 'form-control', readonly: true %>
+                <% if @posting.user_table.userid == session[:user_id] %>
+                    <br> <%= link_to t(:edit_address), posting_edit_address_path(@posting) %>
+                <% end %>
+                <%= link_to t(:view_map), posting_show_address_path(@posting) %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+
+  <% end %>
+</div>
+<div class="col-sm-12 col-sm-offset-1">
+  <div class="form-group">
+    <%= button_to 'BACK', postings_path, method: 'get', class: 'btn' %>
+  </div>
+</div>

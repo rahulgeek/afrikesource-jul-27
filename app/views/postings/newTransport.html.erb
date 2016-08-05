@@ -1,0 +1,8 @@
+<div class="col-sm-11 col-sm-offset-4">
+    <h1><%= t :new_transport %></h1>
+    <% @url = posting_create_transport_path %>
+    <% @method = 'post' %>
+
+    <%= render 'partials/transport_form' %>
+  <%= link_to t(:back), postings_path %>
+</div>

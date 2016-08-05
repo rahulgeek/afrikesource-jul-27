@@ -1,0 +1,206 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  blurb: "1st Platform for Geomarketing and Money Transer from the Diaspora to Africa"
+  hello: "Hello world"
+  post: "POST AN AD"
+  address: "ADDRESS OR AREA"
+  search: "SEARCH"
+  explore: "EXPLORE"
+  market: "MARKET"
+  translate: "FRANÇAIS"
+  login: "login"
+  setup: "sign up"
+  animals: "ANIMALS/AGRO"
+  appliances: "APPLIANCES"
+  automobile: "VEHICLES"
+  hotels: "HOTELS"
+  electronics: "ELECTRONICS"
+  clothing: "CLOTHING"
+  furniture: "FURNITURE"
+  sports: "SPORTS"
+  auto_rental: "AUTO RENTALS"
+  courier: "COURIER"
+  transportation: "TRANSPORTATION"
+  beauty: "BEAUTY & HEALTH"
+  jobs: "JOBS/GIGS"
+  miscellaneous: "MISCELLANEOUS"
+  tourism: "TOURISM"
+  events: "EVENTS"
+  services: "SERVICES"
+  auto_parts: "AUTO PARTS"
+  computers: "COMPUTERS"
+  cellphones: "CELLPHONES/TABLETS"
+  tv_audio: "TV/AUDIO"
+  about: "ABOUT US"
+  terms: "Terms of Use"
+  privacy: "Privacy Policy"
+  real_estate: "REAL ESTATE"
+  posting_message: "What would you like to post:"
+  price: "Price"
+  logout: "Logout"
+  image_file: "Image Files"
+  equipment: "EQUIPMENT"
+  reset_map: "RESET MAP"
+  refund_policy: 'Refund Policy'
+  transport_error: 'prohibited this transport from being saved:'
+  sign_up: 'sign up'
+  FAQ: 'FAQ'
+  land: 'LAND'
+  bedbreakfast: 'BED & BREAKFAST'
+  noposting: 'You need to create a professional account to post on Market'
+  notfound: 'Posting not found'
+  contact: 'Contact Us'
+
+  update_descriptions: 'Update descriptions'
+  reply: 'Reply'
+  share: 'Share'
+  category: 'Type'
+  post_title: "Post title"
+  enable_sharing: 'Enable sharing'
+  post_body: "Post body"
+  post_market_body: "Description of your business, services and products"
+  post_event_body: "Event Description"
+  show_posting_market_body: 'Description of business, services or products'
+  market_posting_message: "You are currently posting under market or events, and if you wish to post elsewhere, you need to use a regular account"
+  update_descriptions: 'Update Descriptions'
+  image_title: 'Small description and price'
+  append_files: 'Append files'
+  model: 'Model'
+  make: 'Make'
+  mileage: 'Mileage'
+
+  view_full: 'View full posting'
+
+  author: 'Author'
+  phone: 'Phone'
+  view_map: 'View Map'
+
+  posting: 'Posting'
+  new_post: 'New Post'
+  pay: 'Pay'
+  profile: 'Profile'
+  approved: 'Approved'
+  username: "Username"
+  password: 'Password'
+  submit: 'Submit'
+
+  name: 'First Name'
+  last_name: 'Last Name'
+  phone: 'Phone Number'
+  user_name: "User Name"
+  password: 'Password'
+  confirm_password: 'Confirm Password'
+  country: 'Country'
+  phone: 'Phone'
+  logo_file: 'Optional logo file for market page'
+
+  new_transport: 'New Transport'
+  title: "Posting Title"
+  posting_price: 'Posting Price'
+  transportation_price: 'Price'
+  space: 'Space'
+
+  from: 'From'
+  to: 'To'
+  submit: 'Submit'
+  remember: ''
+  password_help: 'Password Help'
+  new_address: "Posting Address"
+  address_placeholder: "Enter and address."
+  logo_option: 'Optional logo for market page'
+
+  account: 'Account'
+  posting: 'Posting'
+  postings: 'Postings'
+  your_postings: 'Your Postings'
+  personal: 'Personal'
+  professional: 'Professional'
+
+  address_info: 'Find an address, a specific location or position like Eiffel Tower'
+  search_info: 'Search for a products or services in ads published'
+  explore_info: 'Find banks, restaurants, gas stations, etc ... in your surroundings'
+  market_info: 'Check out the different products and services offer by businesses'
+  event_info: 'Check out concerts, clubs and other events taking place in your area'
+
+  edit_address: 'Edit Address'
+  edit_transport: 'Edit Transport'
+  account_type: 'Account Type'
+  business_name: 'Business Name for Market Page'
+
+  missing_address: 'Missing Address'
+  missing_address_click: 'Missing address, click to add'
+
+  apartment: 'Apartments'
+  houses_condos: 'Houses & Condos'
+  offices_warehouse: 'Offices/warehouse'
+
+  housing: 'Housing'
+  for_sale: 'For Sale'
+  job_gigs: 'Jobs/Gigs'
+  services: 'Services'
+  reset_map: 'Reset Map'
+
+  next: 'Next'
+  back: 'Back'
+  edit: 'Edit'
+  delete: 'Delete'
+  foundation: 'Foundation'
+  save: 'Save'
+  edit_image_list: "Edit image list"
+  add_files: 'Add Files'
+
+  training_course: 'TRAINING COURSE'
+  domestic_services: 'DOMESTIC SERVICES'
+  job_search: "JOB SEARCH"
+  job_offer: "JOB OFFER"
+
+  address_title: 'Location of Posting'
+
+  thank_you: 'Merci'
+  posting_submitted: "Your post has been submitted. Please give us some time to review and approve your posting.  Please check your email for approval notification."
+  posting_market_submitted: "You post has been submitted.  Please give us some time to review and approve your market posting.  Please check your email for approval notification."
+
+  drag_message: "Click and move the "
+  target_message: " on the map to where you would like the post to appear and enter the address."
+
+  view_posting: 'View posting'
+
+  basic: 'Basic has 1 picture (free)'
+  silver: 'Silver has 5 pictures ($2)'
+  gold: 'Gold has 5 pictures and a colored pin ($5)'
+  platinum: 'Platinum has 10 pictures and a colored pin ($10)'
+
+
+  basic2: 'Basic has 5 picture'
+  silver2: 'Silver has 5 pictures'
+  gold2: 'Gold has 10 pictures '
+  platinum2: 'Platinum has 10 pictures and a custom pin'
+
+  pay_bill: 'Pay a bill'
+  advertisement: 'Advertisement'
+  urgent: 'URGENT'
+  bargain: 'BARGAINS'
+
+  errors:
+    messages:
+      blank: 'Cannot be blank'

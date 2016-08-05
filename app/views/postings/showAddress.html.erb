@@ -1,0 +1,36 @@
+<%# form_for @address, url: posting_create_address_url, method: :post do |f| %>
+<% content_for :for_head do %>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places,geometry&key=AIzaSyAim9hgtYAZ6YGOabhLc3rVvcjGYwpU3cc"></script>
+<% end %>
+
+<div class="container" style="">
+
+  <div class='col-lg-8'>
+
+
+<%# include google maps %>
+<%# include marker code %>
+        <div id="googlemaps" style="height: 600px; width: 600px;border: black">
+          <%= requirejs_include_tag 'addLocation' %>
+
+        </div>
+        <% if @posting[:types] == 'transportation' %>
+            <div class="form-group">
+              <b>From</b>
+              <%= @address[:address_1] %><br>
+            </div>
+            <div class="form-group">
+              <b>To</b>
+              <%= @address[:address_2] %><br>
+            </div>
+        <% else %>
+            <div class="form-group">
+              <b>Address:</b>
+              <%= @address[:address_1] %><br>
+            </div>
+        <% end %>
+        <input id="address_lat" style="display:none" value="<%= @address.lat %>"></input>
+        <input id="address_lng" style="display:none" value="<%= @address.lng %>"></input>
+
+  </div>
+</div>

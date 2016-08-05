@@ -1,0 +1,50 @@
+waitSeconds: 5
+
+paths:
+  application: 'application'
+  app: ['https://www.loolmaps.com/vendor/app?afrikelist']
+  markers: ['markers']
+  favorite: ['favorite_module']
+  hmenu: ['hmenu_module']
+  googlemaps: ['async!https://maps.googleapis.com/maps/api/js?v=3.22&libraries=places,geometry&callback=google_ready']
+  moment: ['moment.min']
+  scrollto: ['jquery.scrollTo.min']
+  async: ['//cdnjs.cloudflare.com/ajax/libs/requirejs-async/0.1.1/async','async']
+  jquery: ['//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min', 'jquery-2.1.4.min']
+#  skrollr: ['//global.design-editor.com/v8/skrollr']
+  jquery-mobile: ['jquery.mobile-1.4.5.min']
+  tooltipster: ['jquery.tooltipster.min']
+  aSimpleTour: ['jquery.aSimpleTour.min']
+  underscore: ['underscore']
+  jssor: ['jssor.slider.mini']
+  localinit: ['afrike_init']
+  datebox: ['jqm-datebox-core.min']
+  webydoutils: ['//global.design-editor.com/v8/WidgetsGallery/utils']
+  noUiSlider: ['nouislider.min']
+  addLocation: ['addLocation']
+  dropit: ['dropit']
+
+bundles:
+  afrike_init: ['localinit','afrike_init' ]
+
+shim:
+  datebox: ['jquery','jquery-mobile']
+  aSimpleTour: 'jquery'
+#  skrollr: 'jquery'
+  script_web: 'jquery'
+#  tooltipster: 'jquery'
+  webydoutils: ['jquery','jssor']
+  jssor: 'jquery'
+  addLocation: 'jquery'
+  dropit: 'jquery'
+  underscore:
+    exports: '_'
+
+
+  include: ['underscore', 'app','afrike_init']
+
+#modules:
+#  - name: 'application'
+#  - name: 'addLocation'
+
+priority: ['app','afrike_init','underscore']

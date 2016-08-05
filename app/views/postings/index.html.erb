@@ -1,0 +1,44 @@
+<%= javascript_include_tag 'jquery' %>
+<%= javascript_include_tag 'jquery_ujs' %>
+<div class="col-md-6 col-md-offset-2">
+
+  <%= grid(@postings, show_filters: :when_filtered, upper_pagination_panel: true) do |posting|
+    posting.column name: 'Action' do |task|
+      capture do
+        concat button_to t(:edit), posting_edit_body_path(task), method: :get, class: 'btn btn-success'
+        concat button_to t(:delete), delete_posting_path(task), method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'}
+      end
+    end
+    posting.column name: t(:category), attribute: 'types' do |task|
+      t(task.types)
+    end
+    posting.column name: t(:post_title), attribute: 'posting_title' do |task|
+      link_to task.posting_title, posting_path(task[:id])
+    end
+    posting.column name: t(:price), attribute: 'posting_price' do |task|
+      task.posting_price
+    end
+    posting.column name: t(:approved), attribute: 'approved' do |task|
+
+      if task.address.nil?
+        capture do
+          concat '<div style="color:red">'.html_safe
+          concat t(:missing_address)
+          concat '</div>'.html_safe
+        end
+      elsif task.approved.nil?
+        'NO'
+      else
+        'YES'
+      end
+    end
+    posting.column name: t(:share), attribute: 'enable_sharing' do |task|
+      if task.enable_sharing.nil?
+        'NO'
+      else
+        'YES'
+      end
+    end
+  end -%>
+
+</div>

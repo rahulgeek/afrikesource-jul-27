@@ -1,0 +1,7 @@
+<%= javascript_include_tag 'jquery' %>
+<%= javascript_include_tag 'jquery_ujs' %>
+<div class="col-md-11">
+  <h3><%= Posting.approved_count %> active listings</h3>
+  <h1>Pending Postings</h1>
+  <%= render 'partials/admin_postings' %>
+</div>

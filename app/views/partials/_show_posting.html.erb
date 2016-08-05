@@ -1,0 +1,137 @@
+<% javascript_include_tag "blueimp-gallery.js" %>
+<% javascript_include_tag "blueimp-gallery-fullscreen.js" %>
+<% javascript_include_tag "blueimp-gallery-indicator.js" %>
+<div class="col-sm-12 col-sm-offset-1">
+  <script>
+    $(document).ready(function () {
+      var gallery;
+      var links = this.getElementsByTagName('img');
+      console.log('links' + links.length);
+
+      document.getElementsByClassName('img-responsive').onclick = function (event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement,
+            link = target.src ? target.parentNode : target,
+            options = {index: link, event: event, fullScreen: true},
+            links = this.getElementsByTagName('a');
+
+        blueimp.Gallery(links, options);
+      };
+    $('.img-responsive').click(function(event){
+      event = event || window.event;
+      var target = event.target || event.srcElement,
+          link = target.src ? target.parentNode : target,
+          options = {index: link, event: event, fullScreen: true};
+          links = document.getElementsByClassName('img-responsive');
+      blueimp.Gallery(links, options);
+
+    })
+    });
+  </script>
+  <%= form_for @posting, :html => {:multipart => true}, url: @url, method: :post do |f| %>
+      <%= f.hidden_field :types %>
+      <div class="form-group col-sm-12">
+        <input type = "button" VALUE= '<%= t :reply%>' onClick="parent.location='mailto:<%= @posting.user_table.email %>?subject=re: <%= @posting.posting_title %>'"
+               class = 'btn btn-primary'
+               style ="">
+        <% if !@posting.address.nil? && !@posting.address.hiacode.nil? %>
+            <input type = "button" VALUE= "<%= t :share %>" onClick="parent.location='mailto:?subject= re:<%= @posting.posting_title %>&body=http://www.afrikelist.com/post/postings/showhcode/<%= @posting.address.hiacode %>'"
+                   class = 'btn btn-info'
+                   style ="">
+        <% end %>
+      </div>
+      <div class="col-lg-7">
+        <div class="form-group">
+          <%= f.label t(:category) %>:<%= t @posting.types %>
+        </div>
+      </div>
+      <div class=" col-lg-6">
+        <div class="form-group">
+          <%= f.label t(:post_title) %>:
+          <%= @posting.posting_title %>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <%= f.label t(:price) %>:
+          <%= @posting.posting_price %>
+        </div>
+      </div>
+      <div class="col-lg-10">
+        <div class="form-group">
+          <%= f.label t(:share) %>:
+          <% if @posting[:enable_sharing].nil? %>
+              NO
+          <% else %>
+              YES
+          <% end %>
+
+        </div>
+      </div>
+
+      <%= f.fields_for :address do |ff| %>
+          <div class="col-lg-10">
+            <div class="form-group">
+              <%= ff.label t(:address) %>:
+              <%= @posting.address.address_1 %>
+              <%#= ff.text_field :address_1, class: 'form-control', readonly: true %>
+<% if @posting.user_table.userid == session[:user_id]%>
+              <br> <%= link_to 'Edit Address', posting_edit_address_path(@posting) %>
+<% end %>
+              <%= link_to 'View Map', posting_show_address_path(@posting) %>
+            </div>
+          </div>
+      <% end %>
+      <% if @posting[:types] == 'automobile' or @posting[:types] == 'electronics' %>
+          <div class=" col-lg-4">
+            <div class="form-group">
+              <%= f.label t(:make) %>:<br>
+              <%= @posting.make %><br>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <%= f.label t(:model) %>:<br>
+              <%= @posting.model %><br>
+            </div>
+          </div>
+      <% end %>
+      <% if @posting[:types] == 'automobile' %>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <%= f.label t(:mileage) %>:<br>
+              <%= @posting.mileage %><br>
+            </div>
+          </div>
+      <% end %>
+      <div class="form-group col-lg-9">
+        <%= f.label t(:post_body) %>:<br>
+        <%= @posting.posting_description %>
+      </div>
+      <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" style="">
+        <div class="slides" style=""></div>
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+      </div>
+      <div id='links' class="form-group col-sm-9">
+
+          <% @post_attachment.in_groups_of(4, false).each do |group| %>
+            <div class="row">
+              <% group.each_with_index do |image, index| %>
+            <div class="col-sm-3">
+              <%= link_to(image_tag(image.image_url(:thumb)), image.image_url.to_s, :data => {:index => index}, class: 'img-responsive') %>
+              <%#= image_tag image.image_url(:thumb).to_s , class: 'img-responsive' %>
+            </div>
+                  <% end %>
+            </div>
+          <% end %>
+      </div>
+
+  <% end %>
+  <div class="col-md-12">
+    <%= button_to t(:back), postings_path, method: 'get', class: 'btn' %>
+  </div>
+</div>

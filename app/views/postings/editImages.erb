@@ -1,0 +1,43 @@
+<script src='/assets/imageHelpers.js'></script>
+<% if @posting[:enterprise] != 1 %>
+<style>
+  .descriptions {
+  display: none;
+  }
+</style>
+    <% end %>
+<div class="col-sm-9 col-sm-offset-1">
+
+  <%= form_for(@posting, :url => posting_update_body_url, :method => 'POST', :html => {:id => 'posting_holder'}) do |f| %>
+      <%= f.fields_for :post_attachments do |post_attachment| %>
+          <div class="post_attachment_fields">
+            <div class="form-group col-sm-2">
+              <div style="height: 100px;width: 100px;">
+                <%= image_tag post_attachment.object.image_url(:thumb), size: '100x100' %>
+              </div>
+              <%# if @posting[:enterprise] == 1 || @posting[:types] != 'events' %>
+              <div class="descriptions">
+              <%= t(:image_title) %>
+              <%= post_attachment.text_field :description %><br>
+                </div>
+              <%# end %>
+              <%= link_to t(:delete), post_attachment_path(post_attachment.object.id), :method => 'DELETE', :class => 'btn btn-danger btn-sm' %>
+            </div>
+          </div>
+      <% end %>
+
+      <div class="form-group col-sm-12">
+
+        <%= link_to posting_edit_body_path(params[:id]), :class => 'btn btn-primary' do %>
+            <i class="glyphicon glyphicon-arrow-left"></i>
+            <% end %>
+        <%= f.submit 'Update Descriptions', :class => 'btn btn-info descriptions' %>
+  <% end %>
+
+    </div>
+</div>
+<div class="col-sm-9 col-sm-offset-1">
+  <%= render 'partials/images' %>
+</div>
+
+</div>

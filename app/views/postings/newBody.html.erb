@@ -1,0 +1,19 @@
+<div class="container" style="margin-top: 50px;">
+  <% if @posting.enterprise == '1' || params[:from] == 'market' || params[:posting][:enterprise] == '1' %>
+      <div id="marketBanner"><%= t(:market) %></div>
+  <% end %>
+  <% if @posting.errors.any? %>
+      <% @posting.errors.full_messages.each do | message| %>
+          <%= message   %> <br/>
+      <% end %>
+  <% end %>
+<%#this can be used for both createBody and editBody... url for the next should be different based on the parent %>
+
+  <% @url = posting_create_body_url %>
+  <div class="col-lg-12 col-lg-offset-1">
+    <%= render 'partials/posting' %>
+    <div class="col-md-12">
+
+    </div>
+  </div>
+</div>

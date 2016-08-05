@@ -1,0 +1,6 @@
+<div class="container" style="margin-top: 50px;">
+  <% if @posting.enterprise == 1 %>
+      <div id="marketBanner"><%= t(:market) %></div>
+  <% end %>
+  <%= render 'partials/show_posting' %>
+</div>

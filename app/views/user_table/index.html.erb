@@ -1,0 +1,30 @@
+<div class="col-md-11">
+  <h1>All Users</h1>
+<%= grid(@users, show_filters: :when_filtered, upper_pagination_panel: true)  do |g|
+
+  g.column name: 'Userid', attribute: 'userid'  do |task|
+     link_to task.userid, edit_user_table_path(task)
+  end
+  g.column name: 'First Name', attribute: 'first_name'  do |task|
+    task.first_name
+  end
+  g.column name: 'Last Name', attribute: 'last_name' do |task|
+    task.last_name
+  end
+  g.column name: 'Business', attribute: 'business' do |task|
+    task.business
+  end
+  g.column name: 'Phone', attribute: 'phone' do |task|
+    task.phone
+  end
+  g.column name: 'Level', attribute: 'level' do |task|
+    if task.level == '200'
+      'Admin'
+    end
+  end
+  g.column name: 'Action' do |task|
+    button_to 'Delete', task, method: :delete, data: {confirm: 'Are you sure?' }
+  end
+
+end -%>
+  </div>

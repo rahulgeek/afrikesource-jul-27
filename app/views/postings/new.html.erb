@@ -1,0 +1,61 @@
+<div class="container" style="margin-top: 50px;">
+  <% if @posting.errors.full_messages.any? %>
+      <% @posting.errors.full_messages.each do |error_message| %>
+          <%= error_message if @posting.errors.full_messages.first == error_message %> <br />
+      <% end %>
+  <% end %>
+  <%= form_for(@posting, url: posting_create_path, method: 'get') do |f| %>
+      <div class="col-lg-8" style="background-color: lightgray;">
+        <div class="col-lg-5">
+          <div class="form-group">
+            <%= f.label :email, 'Email Address' %>
+            <%= f.text_field :email, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email_confirmation, 'Confirm Email Address' %>
+            <%= f.text_field :email_confirmation, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :phone, 'Phone Number' %>
+            <%= f.text_field :phone, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-lg-2 col-lg-offset-1">
+          <%= f.label :contact_by, 'Contact By' %>
+          <div class="form-group">
+            <%= f.radio_button(:contact_by, "Phone") %>
+            <%= label_tag :Phone, "Phone" %>
+          </div>
+          <div class="form-group">
+            <%= f.radio_button(:contact_by, "Text") %>
+            <%= label_tag :SMS, "Text" %>
+          </div>
+          <div class="form-group">
+            <%= f.radio_button(:contact_by, "Email") %>
+            <%= label_tag :Email, "Email" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-10">
+        <div class=" col-lg-4">
+
+          <div class="form-group">
+            <%= f.label 'Post Title' %><br>
+            <%= f.text_field :posting_name, class: 'form-control' %><br>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+
+            <%= f.label 'Price' %><br>
+            <%= f.text_field :posting_price, class: 'form-control' %><br>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <%= f.label 'Post Body' %><br>
+          <%= f.text_area :posting_description, class: 'form-control', rows: "10" %>
+        </div>
+        </div>
+      <%= f.submit %>
+  <% end %>
+  </div>

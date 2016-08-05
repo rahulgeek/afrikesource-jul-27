@@ -1,0 +1,70 @@
+<!--script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places,geometry?key=AIzaSyAim9hgtYAZ6YGOabhLc3rVvcjGYwpU3cc"></script-->
+<%= form_for @posting, url: @url, method: @method do |f| %>
+
+    <%= f.hidden_field :types %>
+    <% if @posting.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@posting.errors.count, "error") %> <%= t(:transport_error) %></h2>
+
+          <ul>
+            <% @posting.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.label t :title %><br>
+      <%= f.text_field :posting_title %>
+    </div>
+    <div class="form-group">
+      <%= f.label :date %><br>
+      <%= f.datetime_select :date %>
+    </div>
+      <div class="form-group">
+        <%= f.label t :enable_sharing %>:
+        <% if is_vendor? || is_admin? || !@posting.persisted? %>
+            <%= f.check_box :enable_sharing, class: '' %><br>
+        <% else %>
+            <% if @posting[:enable_sharing].nil? %>
+                NO
+            <% else %>
+                YES
+            <% end %>
+        <% end %>
+      </div>
+    <div class="form-group">
+      <%= f.label t :posting_price %><br>
+      <%= f.number_field :posting_price %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label t :space %><br>
+      <%= f.number_field :space %>
+    </div>
+    <%= f.fields_for :post_attachments do |post_attachment| %>
+        <div class="post_attachment_fields">
+          <div class="form-group col-sm-3" >
+            <div style="height: 200px;width: 200px;">
+              <%= image_tag post_attachment.object.image_url(:thumb) %>
+            </div>
+            <% if @posting[:enterprise] == 1 || @posting[:types] == 'events' %>
+                Title:
+                <%= post_attachment.text_field :description %><br>
+            <% end %>
+            <%= post_attachment.check_box :_destroy %>
+            <%= post_attachment.label :delete %>
+          </div>
+        </div>
+    <% end %>
+    <div class="col-sm-12" >
+      <div class="form-group">
+        <% if @posting.persisted? %>
+            <%= button_to 'Update Posting', posting_update_body_path, method: 'post', class: 'btn' %>
+        <% else %>
+            <%= f.submit t(:next), class: 'btn' %>
+        <% end %>
+      </div>
+    </div>
+<% end %>
+

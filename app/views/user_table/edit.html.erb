@@ -1,0 +1,13 @@
+<div class="container" style="margin-top: 50px;">
+
+  <div class="col-sm-12">
+    Edit Users Profile
+    <% if flash[:notice] -%>
+        <p class="notice"><%= flash[:notice] %></p>
+    <% end -%>
+    <% if flash[:error] -%>
+        <p class="error"><%= flash[:error] %></p>
+    <% end -%>
+    <%= render 'partials/user_profile' %>
+  </div>
+</div>

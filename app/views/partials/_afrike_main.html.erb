@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Afrikelist</title>
+  <!--link rel="stylesheet" type="text/css" href="http://global.design-editor.com/v8/base.css"/-->
+  <%= stylesheet_link_tag 'IP_Master_PT_RTL.master.css' %>
+  <%= stylesheet_link_tag 'home.css' %>
+  <%= stylesheet_link_tag 'app.css' %>
+  <%= stylesheet_link_tag 'jquery.mobile-1.4.5.min.css' %>
+  <%= stylesheet_link_tag 'tooltipster.css' %>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&subset=latin,cyrillic-ext,greek-ext,greek,latin-ext,cyrillic"/>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open Sans:300,300italic,400,italic,600,600italic,700,700italic,800,800italic&subset=latin,cyrillic-ext,greek-ext,greek,latin-ext,cyrillic"/>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Michroma:400&subset=latin,cyrillic-ext,greek-ext,greek,latin-ext,cyrillic"/>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quicksand:300,400,700&subset=latin,cyrillic-ext,greek-ext,greek,latin-ext,cyrillic"/>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Cabin:400,italic,500,500italic,600,600italic,700,700italic&subset=latin,cyrillic-ext,greek-ext,greek,latin-ext,cyrillic"/>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Graduate:400&subset=latin,cyrillic-ext,greek-ext,greek,latin-ext,cyrillic"/>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fresca:400&subset=latin,cyrillic-ext,greek-ext,greek,latin-ext,cyrillic"/>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Macondo Swash Caps:400&subset=latin,cyrillic-ext,greek-ext,greek,latin-ext,cyrillic"/>
+
+  <%= requirejs_include_tag 'application' %>
+
+  <style>
+    body {
+      margin: 0;
+    }
+
+  </style>
+  <%= stylesheet_link_tag "main.css" %>
+
+
+  <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"-->
+  <!--link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/alefhebrew.css"/-->
+  <!--script src="https://global.design-editor.com/v8/skrollr.js" type='text/javascript'></script-->
+  <!--script-- src="https://global.design-editor.com/v8/script.js" type='text/javascript'></script-->
+
+
+</head>
+<body>
+
+<div id='skrollr-body' data-role="header">
+  <input type="hidden" class="bp_data" data-bp="pc" data-value="960"/>
+  <div id='generalSitebackgroundDiv' class='generalSitebackgroundDiv'></div>
+  <div id='innerMainPanel0' class='innerMainPanel0'></div>
+  <div id='mainMainPanel0' class='dataTypeMainPanel mainMainPanel0' data-type='MainPanel'>
+
+    <div id='mainShape24__Shape24_Shape66584' data-id='mainShape24' class='dataTypeShape  mainShape24    mainShape' data-type='Shape'></div>
+
+    <header>
+      <div id='mainMainRow1' class='dataTypeMainRow mainMainRow1 ' data-type='MainRow'>
+        <div id='mainMainContent2' class='dataTypeMainContent mainMainContent2' data-type='MainContent'></div>
+      </div>
+    </header>
+    <main>
+      <div id='mainMainRow3' class='dataTypeMainRow mainMainRow3 ' data-type='MainRow'>
+        <div id='mainMainContent4' class='dataTypeMainContent mainMainContent4 ContentHeight' data-type='MainContent'>
+          <div id='innerWidget58' class='innerWidget58 '>
+            <div id='googleMap' class='' style='position: fixed;'></div>
+          </div>
+
+    <div id='servicesPanel' class="servicesPanelClass windowMenuFrame col-3" style='position:absolute;top:120px;left:0px'>
+          <div id="services" class='windowedMenuFrame windowedMenuButton' style="">
+            <%= t(:services) %>
+          </div>
+      <div class="windowedMenuFrame windowedMenuServiceButton" style="left:2px;top: +20px;/*background-color: darkgreen;color: black;*/">
+        Envoyer de l'argent
+      </div>
+    <div style="display:block;height: 70px;width: 209px">
+      <a href='<%= pages_orange_path %>'>
+        <div id='innerImage75__Image75' data-id='innerImage75' data-type='Image' class='dataTypeImage  innerImage75   '>
+          <%= image_tag('orange_logo.png', height: '70', width: '70') %>
+        </div>
+      </a>
+      <a href='<%= pages_orange_path %>'>
+        <div id='innerImage76' data-id='innerImage76' data-type='Image' class='dataTypeImage  innerImage76'>
+          <%= image_tag('tigocash.png', height: '70', width: '70') %>
+        </div>
+      </a>
+      </div>
+      <div class="windowedMenuFrame windowedMenuServiceButton" style="top: +20px;/*background-color: purple;color: black;*/">
+            <%= t(:pay_bill) %>
+      </div>
+      <div class="windowedMenuFrame windowedMenuServiceButton" style="top: +30px;/*background-color: darkgreen;color: black;*/">
+            <%= t(:advertisement) %>
+      </div>
+      <%= link_to t(:post), {:controller => 'postings', :action => 'selectTypes', :from => action_name  } , {:class =>'innerText103 windowedMenuFrame windowedMenuServiceButton' } %>
+    </div>
+    <div id="actionPanel" class="actionPanelClass windowMenuFrame col-3" style="">
+      <div id='innerText121_button' class="windowedMenuFrame windowedMenuButton innerText121 tooltip" style="color:#ffffff;" title="<%= t(:explore_info) %>"><%= t :explore %></div>
+        <% if @_controller.action_name != 'market' %>
+          <%= link_to t(:market), pages_market_path, {:class=>'innerText134 windowedMenuFrame windowedMenuButton tooltip marketStyle', 'data-role' => 'none', :title => t(:market_info) }%>
+        <% end %>
+        <div id='event_action' class="event_text event_textStyle windowedMenuFrame windowedMenuButton tooltip" title="<%= t(:event_info) %>" >
+          <%= t(:events) %>
+        </div>
+    </div>
+    <div id ='profilePanel' class="profilePanelClass windowMenuFrame col-3" style=''>
+            <div id="profile" class='windowedMenuFrame windowedMenuButton' style="">
+              <%= t(:profile) %>
+            </div>
+            <div id="profile_2" class="windowedMenuFrame windowedMenuServiceButton" style="top: +20px;">
+              Annonceur
+            </div>
+            <div id="profile_3" class="windowedMenuFrame windowedMenuServiceButton" style="top:+30px">
+              Entrepreneur
+            </div>
+            <div id="profile_4" class="windowedMenuFrame windowedMenuServiceButton" style="top:+40px">
+              Societe
+            </div>
+            <div id="profile_5" class="windowedMenuFrame windowedMenuServiceButton" style="top:+50px">
+              Particulier
+            </div>
+
+          </div>
+
+      <% if @_controller.action_name == 'show' %>
+          <div id='innerText128__Text128' data-id='innerText128' style='' data-type="text" class=' inner_text innerText128   text_editor_resets'>
+            <div class='innerText128_ContentDiv'>
+
+              <h2 class="Title ospfxw17b1f59be2ba1f79ce59ac1d526df694ossfx"><a href="/" style="text-decoration: none;color:black !important;">
+                <%= image_tag 'dark_logo_transparent_background.png', size: '200x60', alt: 'AfrikeList' %>
+              </a></h2>
+              <p class="Normal ospfxwd11421dc13a47a96b912eaa88b15b8c7ossfx">&nbsp;</p></div>
+            <div class='text_caption_background' style='background-color:transparent;opacity:1;position:absolute;left:0;bottom:0;top:0;right:0;z-index:-1;'></div>
+          </div>
+      <% elsif @_controller.action_name == 'market' %>
+              <div id='innerText128__Text128' data-id='innerText128' style='' data-type="text" class='inner_text innerText1282   text_editor_resets'>
+                <div class='innerText128_ContentDiv'>
+                  <h2 class="Title ospfxw17b1f59be2ba1f79ce59ac1d526df694ossfx">
+                    <% if @language == :fr %>
+                      <%= link_to image_tag('dark_logo_transparent_background_boutique.png', size: '200x60', alt: 'AfrikeList'), pages_show_path, {:style => 'text-decoration: none;color:#000000'} %>
+                    <% else %>
+                      <%= link_to image_tag('dark_logo_transparent_background_market.png', size: '200x60', alt: 'AfrikeList'), pages_show_path, {:style => 'text-decoration: none;color:#000000'} %>
+                    <% end %>
+                  </h2>
+                  <p class="Normal ospfxwd11421dc13a47a96b912eaa88b15b8c7ossfx">&nbsp;</p></div>
+                <div class='text_caption_background' style='background-color:transparent;opacity:1;border-radius:5px;-moz-border-radiu:5px;border-top-left-radius:5px;-moz-border-radius-topleft:5px;border-top-right-radius:5px;-moz-border-radius-topright:5px;border-bottom-right-radius:5px;-moz-border-radius-bottomright:5px;border-bottom-left-radius:5px;-moz-border-radius-bottomleft:5px;position:absolute;left:0;bottom:0;top:0;right:0;z-index:-1;'></div>
+              </div>
+      <% end %>
+  <% if action_name == 'market' %>
+  <div id='home_icon' data-id='home_icon' data-type='Image' class='dataTypeImagehome'>
+    <a href="/" >
+    <%= image_tag('home_logo.png', height: '42', width: '44') %>
+      </a>
+  </div>
+  <% end %>
+
+  <div id='innerText95__Text95' data-id='innerText95' style='height:105px;' data-type="text" class='dataTypeText  inner_text innerText95'>
+    <div class='innerText95_ContentDiv' style="text-align:right;">
+      <p class="Normal ospfxwae812ce9f14d6299624a89e8effbabb7ossfx">
+        <% if session[:user_id].nil?  || @user.nil? %>
+            <%= link_to t(:login), new_login_path, {:class => 'loginbutton'} %>
+
+          <div class='text_caption_background' style='background-color:transparent;opacity:1;position:absolute;left:0;bottom:0;top:0;right:0;z-index:-1;'></div>
+          </div>
+          </p>
+          </div>
+          <div id='innerText104__Text104_Text1774867' data-id='innerText104' style='' data-type="text" class='dataTypeText  inner_text innerText104   text_editor_resets'>
+            <div class='innerText104_ContentDiv'>
+              <p class="Normal ospfxwdfccb6e3b31fffb78e50aeb9d69dfe7bossfx">
+
+                <%= link_to t(:sign_up), login_sign_up_path, {:class => 'loginbutton'} %>
+              </p>
+            </div>
+      <% else %>
+          <ul class="afrike_drop dropit_menu" style="">
+            <li>  <a =href='#' class='dropit_menu'><%= @user[:userid] %> <span class="glyphicon glyphicon-triangle-bottom"></span></a>
+            <ul>
+              <li><%= link_to t(:your_postings), postings_path, {:style => 'text-decoration: none;color:#0000ff'}  %></li>
+              <li><%= link_to t(:logout), logout_path, {:style => 'text-decoration: none;color:#0000ff'} %></li>
+            </ul>
+            </li>
+          </ul>
+          </p>
+          </div>
+      <% end %>
+
+
+      <div class='text_caption_background' style='background-color:transparent;opacity:1;position:absolute;left:0;bottom:0;top:0;right:0;z-index:-1;'></div>
+
+      </div>
+
+          <div id='innerText138__Text138_Text8774415' data-id='innerText138' style='' data-type="text" class='dataTypeText  inner_text innerText138   text_editor_resets'>
+            <div class='innerText138_ContentDiv'><h2 class="Title ospfxw8e356c9782da7ee0cd3d8ebda67ee1c4ossfx">
+              <% if @language.to_s == 'fr' || params[:locale] == 'fr' %>
+                  <%= link_to 'English', url_for(:locale => 'en'), {:style => 'text-decoration: none;cursor:pointer;'} %>
+              <% else %>
+                  <%= link_to 'Français',url_for(:locale => 'fr'), {:style => 'text-decoration:none;cursor:pointer;'} %>
+              <% end %>
+            </h2></div>
+            <div class='text_caption_background' style='background-color:transparent;opacity:1;position:absolute;left:0;bottom:0;top:0;right:0;z-index:-1;'></div>
+          </div>
+          <div id='innerText113__Text113_Text21930963' data-id='innerText113' style='' data-type="text" class='dataTypeText  inner_text innerText113  blurb_row text_editor_resets'>
+            <div class='innerText113_ContentDiv'>
+              <div class="Title ospfxw7f8e8f3e9220b6bf36aa5f4eedc079eaossfx" style=""><%= t :blurb %></div>
+            </div>
+          </div>
+  <!--/div-->
+      <div id='menubanner' style="position: absolute;top: 80px;left: 250px;" class="col-6">
+  <div class='row col-12'>
+        <div id='urgent' class="windowedMenuFrame windowedMenuButton col-6" style="padding-top: 6px;">
+          <%= link_to t(:urgent), postings_urgent_path, :class => 'urgentDiv' %>
+        </div>
+        <div id='bargains' class="windowedMenuFrame windowedMenuButton col-6" style="padding-top: 6px;">
+          <%= link_to t(:bargain), postings_urgent_path, :class => 'bargainsDiv' %>
+        </div>
+  </div>
+
+        <div class='row' style="top: +120px">
+        <div id='innerText85__Text85' data-id='innerText85' style='' data-type="text" class='dataTypeText  inner_text innerText85 windowedMenuInputFrame text_editor_resets'>
+          <div class='innerText85_ContentDiv' style="width:90%;"><p class="Normal ospfxw5d486b2b9f561e06d669bd00d9caad99ossfx">
+            <input id='startInput1' class=' searchbox' title="Enter the name of a business, address or postal/zip code" type="text" name="start" data-mini='true' data-clear-btn='true' placeholder='<%= t :address %>' style="font-size: 12px;width:80%">
+          </p></div>
+          <a id='inputInfo' href='#' class='ui-btn ui-corner-all ui-icon-info ui-btn-icon-notext tooltipclick' data-role='none' style="color:blue;right:-1px;top:-8px;position:absolute;" title="<%= t :address_info%>"></a>
+          <!--div class='text_caption_background' style='background-color:#CCCCCC;opacity:1;border-radius:1px;-moz-border-radiu:1px;border-top-left-radius:1px;-moz-border-radius-topleft:1px;border-top-right-radius:1px;-moz-border-radius-topright:1px;border-bottom-right-radius:1px;-moz-border-radius-bottomright:1px;border-bottom-left-radius:1px;-moz-border-radius-bottomleft:1px;position:absolute;left:0;bottom:0;top:0;right:0;z-index:-1;'></div-->
+        </div>
+        <div id='innerText109__Text109_Text8557004' data-id='innerText109' style='' data-type="text" class='dataTypeText  inner_text windowedMenuInputFrame innerText109   text_editor_resets'>
+          <div class='innerText109_ContentDiv' style="width:90%;">
+            <p class="Normal ospfxwf0c7c7c84160e2329ddc5ac2e8656cc7ossfx">
+              <input id='startInput3' class='searchbox' type="text" data-mini='true' data-clear-btn='true' placeholder='<%= t :search %>' style="font-size: 12px;">
+            </p></div>
+          <a href='#' class='ui-btn ui-corner-all ui-icon-info ui-btn-icon-notext tooltipclick' onclick="$('#searchInfo').toggle()" style="color:blue;right:-1px;top:-8px;position:absolute;" title="<%= t :search_info%>"></a>
+          <!--div-- class='text_caption_background' style='background-color:#F9F5ED;opacity:1;border-radius:1px;-moz-border-radius:1px;border-top-left-radius:1px;-moz-border-radius-topleft:1px;border-top-right-radius:1px;-moz-border-radius-topright:1px;border-bottom-right-radius:1px;-moz-border-radius-bottomright:1px;border-bottom-left-radius:1px;-moz-border-radius-bottomleft:1px;position:absolute;left:0;bottom:0;top:0;right:0;z-index:-1;'></div-->
+        </div>
+        </div>
+
+    </div>
+        <div id='categoriesPanel' style="" class="windowMenuFrame">
+          <div id="categories" class='windowedMenuButton' style="">
+            <%= t(:category) %>
+          </div>
+          <h2 id="animals_action" class="search_items"><%= t :animals %></h2>
+          <h2 id="appliance_action" class="search_items"><%= t :appliances %></h2>
+          <h2 id="vehicle_action" class="search_items"><%= t :automobile %></h2>
+          <h2 id="auto_parts_action" class="search_items"><%= t :auto_parts %></h2>
+          <h2 id='beauty_action' class="search_items"><%= t :beauty %></h2>
+          <h2 id='cellphone_action' class="search_items"><%= t :cellphones %></h2>
+          <h2 id='clothing_action' class="search_items"><%= t :clothing %></h2>
+          <h2 id='computers_action' class="search_items"><%= t :computers %></h2>
+
+          <h2 id='electronics_action' class="search_items"><%= t :electronics %></h2>
+          <h2 id='equipment_action' class="search_items"><%= t :equipment %></h2>
+          <h2 id='furniture_action' class="search_items"><%= t :furniture %></h2>
+          <h2 id="hotels_action" class="search_items"><%= t :hotels %></h2>
+          <h2 id="bedbreakfast_action" class="search_items"><%= t :bedbreakfast %></h2>
+          <h2 id='miscellaneous_action' class="search_items"><%= t :miscellaneous %></h2>
+          <h2 id='real_estate_action' class="search_items"><%= t :real_estate %></h2>
+          <h2 id="land_action" class="search_items"><%= t :land %></h2>
+
+
+          <h2 id="sports_action" class="search_items"><%= t :sports %></h2>
+          <h2 id="tourism_action" class="search_items"><%= t :tourism %></h2>
+          <h2 id='tv_audio_action' class="search_items"><%= t :tv_audio %></h2>
+          <h2 id='jobs_action' class="search_items"><%= t :jobs %></h2>
+          <h2 id='transportation_action' class="search_items"><%= t(:transportation) %></h2>
+          <h2 id='courier_action' class="search_items"><%= t :courier %></h2>
+          <h2 id="auto_rental_action" class="search_items"><%= t :auto_rental %></h2>
+        </h2>
+</div>
+
+    </main>
+    <footer style="width: 100%;background-color: #333;">
+      <div id='mainMainRow5' class='dataTypeMainRow mainMainRow5 ' data-type='MainRow'>
+        <div id='mainMainContent6' class='dataTypeMainContent mainMainContent6' data-type='MainContent'>
+          <div id='innerText77__Text77_Text11988006' data-id='innerText77' style='' data-type="text" class='noDataTypeText inner_text innerText77   text_editor_resets'>
+            <div class='innerText77_ContentDiv'><h1 class="innerText77_ContentDiv">
+              <span style="color:#FFFFFF;">AfrikeList 2016</span></h1></div>
+            <div class='text_caption_background' style='background-color:transparent;opacity:1;position:absolute;left:0;bottom:0;top:0;right:0;z-index:-1;'></div>
+          </div>
+          <div id='innerText79__Text79_Text11693168' data-id='innerText79' style='' data-type="text" class='dataTypeText footer_left inner_text innerText79   text_editor_resets'>
+            <div class='innerText79_ContentDiv'><h2 class="footer_class">
+              <span style="color:#FFFFFF;"><%= t :about %></span></h2></div>
+            <div class='text_caption_background' style='background-color:transparent;opacity:1;position:absolute;left:0;bottom:0;top:0;right:0;z-index:-1;'></div>
+          </div>
+          <div id='innerText110__Text110_Text443213' data-id='innerText110' style='' data-type="text" class='dataTypeText footer_right inner_text innerText110   text_editor_resets'>
+            <div class='innerText110_ContentDiv'><h2 class="footer_class">
+              <%= link_to t(:terms), pages_terms_path, {:style => 'text-decoration: none;color:white', :class => 'footer_class'} %>
+            </h2></div>
+            <div class='text_caption_background' style='background-color:transparent;opacity:1;position:absolute;left:0;bottom:0;top:0;right:0;z-index:-1;'></div>
+          </div>
+          <div id='innerText111__Text111_Text15882244' data-id='innerText111' style='' data-type="text" class='dataTypeText footer_right inner_text innerText111   text_editor_resets'>
+            <div class='innerText111_ContentDiv'><h2 class="footer_class">
+              <%= link_to t(:privacy), pages_privacy_path, {:style => 'text-decoration: none;color:white', :class => 'footer_class'} %>
+            </h2></div>
+            <div class='text_caption_background' style='background-color:transparent;opacity:1;position:absolute;left:0;bottom:0;top:0;right:0;z-index:-1;'></div>
+          </div>
+          <div id='refundPolicyId' data-id='refundPolicyId' style='' data-type="text" class='dataTypeText  inner_text refundPolicy footer_right text_editor_resets'>
+            <div class='refundPolicy_ContentDiv'><h2 class="footer_class">
+              <%= link_to t(:refund_policy), pages_refund_path, {:style => 'text-decoration: none;color:white', :class => 'footer_class'} %>
+            </h2></div>
+            <div class='text_caption_background' style='background-color:transparent;opacity:1;position:absolute;left:0;bottom:0;top:0;right:0;z-index:-1;'></div>
+          </div>
+          <div id='innerText153__Text153_Text4623023' data-id='innerText153' style='' data-type="text" class='dataTypeText footer_left inner_text innerText153   text_editor_resets'>
+            <div class='innerText153_ContentDiv'><h2 class="ospfxwe5f4567e00abb3e661d7449816f419afossfx">
+              <span style="color:#FFFFFF;">Contact Us</span></h2></div>
+            <div class='text_caption_background' style='background-color:transparent;opacity:1;position:absolute;left:0;bottom:0;top:0;right:0;z-index:-1;'></div>
+          </div>
+          <div id='innerText152__Text152_Text4098622' data-id='innerText152' style='' data-type="text" class='dataTypeText footer_left inner_text innerText152   text_editor_resets'>
+            <div class='innerText152_ContentDiv'>
+              <h2 class="ospfxwbba798125aa92a91e11f282c8f20c37aossfx"> <div class="footer_class" style="color: white;">             <%= t(:FAQ) %></div>
+                            </h2></div>
+            <div class='text_caption_background' style='background-color:transparent;opacity:1;position:absolute;left:0;bottom:0;top:0;right:0;z-index:-1;'></div>
+          </div>
+          <div id='foundationId' data-id='foundationId' style='' data-type="text" class='dataTypeText footer_left inner_text foundation   text_editor_resets'>
+            <div class='foundation_ContentDiv'>
+              <h2 class="footer_class" style="color:white" ><%= t(:foundation) %>
+              </h2></div>
+            <div class='text_caption_background' style='background-color:transparent;opacity:1;position:absolute;left:0;bottom:0;top:0;right:0;z-index:-1;'></div>
+          </div>
+
+          <div id='innerImage132__Image132' data-id='innerImage132' data-type='Image' class='dataTypeImage  innerImage132'>
+            <a href="https://www.facebook.com/afrikelist" target="_blank">
+            <%= image_tag('facebook_logo.png', height: '42', width: '44') %>
+              </a>
+          </div>
+          <div id='innerImage133__Image133' data-id='innerImage133' data-type='Image' class='dataTypeImage  innerImage133'>
+            <%= image_tag('instagram_logo.png', height: '42', width: '44') %>
+          </div>
+        </div>
+      </div>
+
+  </footer>
+
+
+  <div id="uberpanel" class="map-control">
+    <div id="ainPanel" class="map-control-frame content-padding" style="display:none">
+      <div id="mainPanelTopMenu" style='display: block-inline'>
+      </div>
+      <!--form action=""-->
+      <div id="mainPanelInputA" class='container' style="clear:both">
+        <label for="startInput1" class="ui-hidden-accessible">Starting Position</label>
+        <img id="firstImage" title="Zoom to Marker or drop Marker" style='left: 15px; margin: auto; width: 25px; height: 25px;' onclick='zoomStart()' class="tooltip ui-marker-a">
+        <div class='flex-column'>
+          <!--    <div class="ui-input-text ui-body-inherit ui-corner-all ui-mini ui-shadow-inset ui-input-has-clear" style="padding:0px;margin:0px;"> -->
+          <input id='startInput1' class='tooltip searchbox' title="Enter the name of a business, address or postal/zip code" type="text" name="start" data-mini='true' data-clear-btn='true' placeholder='<%= t :address %>' tyle="font-size:12px;">
+        </div>
+        <!--</div> -->
+        <button title="Maximize Panel" onclick="openMainPanel('#mainPanel')" class='tooltip mainPanelAction ui-btn ui-btn-icon-notext ui-icon-arrow-d' style="height:35px;width:35px;"></button>
+      </div>
+      <div id="mainPanelInputB" class='container' style="clear:both">
+        <label for="startInput2" class="ui-hidden-accessible">Destination Position</label>
+        <img id='secondImage' title="Zoom to Marker" style='left: 15px; margin: auto; width: 25px;height: 25px' onclick='zoomDest()' class="tooltip ui-marker-b">
+        <input id='startInput2' class='tooltip searchbox' title="Enter the name of a business, address or postal/zip code" type="text" name="start" data-mini='true' data-clear-btn='true' placeholder='<%= t :address %>'>
+        <div class='flex-column'>
+          <!--<div class="ui-input-text ui-body-inherit ui-corner-all ui-mini ui-shadow-inset ui-input-has-clear" style="padding:0px;margin:0px;"> -->
+
+          <!--</div> -->
+        </div>
+        <button title="Maximize Panel" onclick="openMainPanel('#mainPanel')" class='tooltip mainPanelAction ui-btn ui-btn-icon-notext ui-icon-arrow-d' style="height:35px;width:35px;"></button>
+      </div>
+      <!--/form-->
+      <!-- note that this will conflict initially with listInviteData panel until it is regressed -->
+      <div id="mainPanelInviteData" class="inviteSection" style="display:none">
+        <div class="description-block">
+          <img onclick='' class="ui-marker-b invite-icon">
+          <p id='invitedLocation' class='invite_display invite-code invite-text'></p>
+        </div>
+        <div id="invitedNotes" style="display:block;" class="description-block">
+          <img onclick='' class="ui-icon-info invite-icon">
+          <p id='invitedDescription' class='invite_display invite-code invite-text'></p>
+        </div>
+        <div class="description-block">
+          <img onclick='' class="ui-lool-clock invite-icon">
+          <p id='invitedDate' class='invite_display invite-code invite-text'></p>
+        </div>
+      </div>
+      <div id="mainPanelBottomMenu" style="display: block-inline;clear: both;">
+        <div data-role='controlgroup' data-type='horizontal' class='control-text' style="float:left">
+        </div>
+
+        <div class='copyright' style="clear:both"></div>
+      </div>
+      <button id="travel-mode-popup-menu" class="ui-btn" style=""></button>
+      <div id='mode-menus' data-transition='slide' style="display:  flex;flex-direction: row;display:none;">
+        <button id="bike-pop" data-role='none' class="travel-menu" style=""></button>
+        <button id="walk-pop" data-role='none' class="travel-menu" style=""></button>
+        <button id="transit-pop" data-role='none' class="travel-menu" style=""></button>
+        <button id="drive-pop" data-role='none' class="travel-menu" style=""></button>
+      </div>
+      <div id="mainReset" style=''>
+        <div style="width:50px;margin: auto;">
+          <a id="mainResetButton" title="<%= t(:reset_map) %>" data-theme='a' data-nodisc='true' data-inline="true" data-icon="delete" data-iconpos="notext" data-role="button" class="tooltip ui-alt-icon ui-nodisc-icon" style='height: 45px;width: 45px;right:22px;border-radius: 50%;'></a>
+        </div>
+      </div>
+      <div id="clusterNavigation" style='display:none;'>
+        <label id="clusterText" class="cluster"></label>
+        <label id="clusterTotal" class="cluster"></label>
+        <div style="width:150px;margin: auto; margin-left: +20px;">
+          <a id="prevClusterButton" title="Retrieve previous set" data-nodisc='true' data-inline="true" data-icon="carat-l" data-iconpos="notext" data-role="button" class="tooltip ui-alt-icon ui-nodisc-icon" style='height: 45px;width: 45px;border-radius: 50%; padding-top: 4px;margin: 0px;right:0px;display:none'></a>
+          <a id="reset" title="<%= t(:reset_map) %>" data-nodisc='true' data-theme='a' data-inline="true" data-icon="delete" data-iconpos="notext" data-role="button" class="tooltip ui-alt-icon ui-nodisc-icon cluster-icon" style='height: 45px;width: 45px;border-radius: 50%; padding-top: 4px;margin: 0px;right:0px;'></a>
+          <a id="nextClusterButton" title="Retrieve next set" data-nodisc='true' data-inline="true" data-icon="carat-r" data-iconpos="notext" data-role="button" class="tooltip ui-alt-icon ui-nodisc-icon" style='height: 45px;width: 45px;border-radius: 50%; padding-top: 4px;margin: 0px;right:0px;display:none'></a>
+        </div>
+      </div>
+      <div id='venue-details-ui' class='map-control map-control-frame scrollableWindow' style='display:none'>
+        <!--<div id='venue-details-image' style="position: fixed;top: 0px;left: 0px;width: 400px; height: 200px; z-index: -10;"></div-->
+        <div id="venue-details-ui-text-header">
+          <div data-role='controlgroup' data-type='horizontal' style="padding: 0px;margin: 0px;">
+            <button id='venue-details-close-event' title="" class='ui-btn-inline ui-btn ui-icon-bullets ui-btn-icon-right'><%= t(:postings).capitalize %></button>
+            <button id='venue-details-share-event' title="" class='ui-btn-inline ui-btn ui-icon-bullets ui-btn-icon-right'><%= t(:share).capitalize %></button>
+          </div>
+          <button id='venue-details-close' class='ui-btn ui-btn-icon-notext ui-nodisc-icon ui-icon-lool-clear' style="height: 35px;width: 35px;position: absolute;right: 10px;top:5px;border-radius: 50%; margin: 0px;"></button>
+
+        </div>
+        <div>
+          <div id='venue-details-image' class='scrollableWindow venue-image'>
+            <h1 id='venueName'></h1>
+          </div>
+        </div>
+        <div id='venue-details-ui-text' class='control-text smooth_scrolling'></div>
+        <div id="venue-details-copyright" class='copyright' style="position: absolute; bottom: 0px;width: 100%">
+          <div style="float:right">
+            <img src="images/powered-by-google-on-white.png" alt='Powered by Google' align='right'></div>
+        </div>
+      </div>
+
+      <div id='venue-ui' class='map-control' style='display:none'>
+        <div id="venue-ui-text-header" class='' style='overflow: visible;margin:0px;'>
+          <div id="venue-ui-control-header" data-type='horizontal' class='control-text' style="padding:0px;margin:0px;">
+            <div class="ui-controlgroup-controls" data-role='controlgroup' data-type='horizontal' id="venue-list-controls" style="width:-moz-fit-content;width: -webkit-fit-content;margin:0px;">
+              <button id="venue-dismiss" class='ui-btn ui-btn-icon-notext ui-nodisc-icon ui-icon-lool-clear' style="height: 16px;width: 8px;right: 10px;top:5px;border-radius: 50%; margin: 0px;position:absolute;"></button>
+            </div>
+
+          </div>
+          <div id="minimap" style="">
+          </div>
+        </div>
+        <div id='venue-ui-container' class="smooth_scrolling" style='overflow: auto;'>
+          <div id="venue-text-scrolling" style="position: absolute; overflow: auto;">
+            <div class="" id="venue-text" style="overflow: auto;">
+            </div>
+          </div>
+        </div>
+        <div id="venue-ui-adcontainer">
+        </div>
+        <div id="venue-ui-copyright" class='copyright' style="position: absolute; bottom: 0px;width: 100%">
+          <div style="float:right"></div>
+        </div>
+      </div>
+      <div style="position:absolute;padding:0px;margin:0px;left: 45%;bottom: -12px;">
+        <a id='swipebutton' title="Minipanel Mode" data-inline="true" data-role="button" data-icon="lool-move" data-nodisc="true" class="ui-nodisc-icon ui-input-btn ui-shadow ui-icon-lool-move tooltip" style="display:none;margin: 0px;position: relative;"></a>
+      </div>
+    </div>
+    <div id="search-options-div" class="map-control map-control-frame content-padding" style='display:none'>
+      <div data-role='controlgroup' data-type='horizontal'>
+
+        <button onclick='radiusClosePanel()' data-mini="true" data-inline="true" class='ui-btn ui-btn-icon-right ui-nodisc-icon ui-icon-lool-map' style="float: right">Finish</button>
+      </div>
+      <br>Search Radius in meters (1 M = 3.28 Feet)
+      <div class='container' style="clear:both; margin-bottom: 20px;">
+        <input type="number" id="radius" style="width: 70px;" value="2500">
+        <div id="radius2" style="width:80%;margin: 10px;"></div>
+      </div>
+      <div class='copyright'></div>
+    </div>
+    <div id="types-div" class="map-control map-control-frame content-padding" style="display:none">
+      <div data-role='controlgroup' data-type='horizontal' class='control-text'>
+        <div class="ui-controlgroup-controls" id="types-text">
+          <button id='typesDivSaveReturn' class='ui-btn ui-btn-inline ui-icon-arrow-l ui-btn-icon-right'>Return</button>
+          <button id='typesDivSave' class='ui-btn ui-btn-inline ui-icon-arrow-u ui-btn-icon-right'>Search</button>
+        </div>
+      </div>
+      <div id="typesList" style='display: table;width: 100%;'>
+        <div style='display: table-row;'>
+          <div class='googletypecontainer'>
+            <input id='google-type-art-gallery' data-enhanced='true' type='radio' name='googletype' value='hospital' class='googletype'>ART
+            GALLERY<br/>
+          </div>
+          <div class='googletypecontainer'>
+            <input id='google-type-atm' data-enhanced='true' type='radio' name='googletype' value='atm' class='googletype'>ATM<br/>
+          </div>
+        </div>
+        <div style='display: table-row;'>
+          <div class='googletypecontainer'>
+            <input id='google-type-bank' data-enhanced='true' type='radio' name='googletype' value='bank' class='googletype'>BANK<br/>
+          </div>
+          <div class='googletypecontainer'>
+            <input id='google-type-bar' data-enhanced='true' type='radio' name='googletype' value='bar' class='googletype'>BAR<br/>
+          </div>
+        </div>
+        <div style='display: table-row;'>
+          <div class='googletypecontainer'>
+            <input id='google-type-beauty-salon' data-enhanced='true' type='radio' name='googletype' value='hospital' class='googletype'>BEAUTY
+            SALON<br/>
+          </div>
+          <div class='googletypecontainer'>
+            <input id='google-type-bowlingalley' data-enhanced='true' type='radio' name='googletype' value='bowlingalley' class='googletype'>BOWLING
+            ALLEY<br/>
+          </div>
+        </div>
+        <div style='display: table-row;'>
+          <div class='googletypecontainer'>
+            <input id='google-type-cafe' data-enhanced='true' type='radio' name='googletype' value='cafe' class='googletype'>CAFE<br/>
+          </div>
+          <div class='googletypecontainer'>
+            <input id='google-type-clothing' data-enhanced='true' type='radio' name='googletype' value='hospital' class='googletype'>CLOTHING
+            STORE<br/>
+          </div>
+        </div>
+        <div style='display: table-row;'>
+          <div class='googletypecontainer'>
+            <input id='google-type-dentist' data-enhanced='true' type='radio' name='googletype' value='dentist' class='googletype'>DENTIST<br/>
+          </div>
+          <div class='googletypecontainer'>
+            <input id='google-type-doctor' data-enhanced='true' type='radio' name='googletype' value='doctor' class='googletype'>DOCTOR<br/>
+          </div>
+        </div>
+        <div style='display: table-row;'>
+          <div class='googletypecontainer'>
+            <input id='google-type-food2' data-enhanced='true' type='radio' name='googletype' value='food' class='googletype'>FOOD<br/>
+          </div>
+          <div class='googletypecontainer'>
+            <input id='google-type-gas-station' data-enhanced='true' type='radio' name='googletype' value='gas_station' class='googletype'>GAS
+            STATION<br/>
+          </div>
+        </div>
+        <div style='display: table-row;'>
+          <div class='googletypecontainer'>
+            <input id='google-type-gym' data-enhanced='true' type='radio' name='googletype' value='gym' class='googletype'>GYM<br/>
+          </div>
+          <div class='googletypecontainer'>
+            <input id='google-type-hospital' data-enhanced='true' type='radio' name='googletype' value='hospital' class='googletype'>HOSPITAL<br/>
+          </div>
+        </div>
+        <div style='display: table-row;'>
+          <div class='googletypecontainer'>
+            <input id='google-type-hotel' data-enhanced='true' type='radio' name='googletype' value='lodging' class='googletype'>HOTEL<br/>
+          </div>
+          <div class='googletypecontainer'>
+            <input id='google-type-museum' data-enhanced='true' type='radio' name='googletype' value='museum' class='googletype'>MUSEUM<br/>
+          </div>
+        </div>
+        <div style='display: table-row;'>
+          <div class='googletypecontainer'>
+            <input id='google-type-nightclub' data-enhanced='true' type='radio' name='googletype' value='nightlife' class='googletype'>NIGHTLIFE<br/>
+          </div>
+          <div class='googletypecontainer'>
+            <input id='google-type-pharmacy' data-enhanced='true' type='radio' name='googletype' value='pharmacy' class='googletype'>PHARMACY<br/>
+          </div>
+        </div>
+        <div style='display: table-row;'>
+          <div class='googletypecontainer'>
+            <input id='google-type-restaurant' data-enhanced='true' type='radio' name='googletype' value='restaurant' class='googletype'>RESTAURANT<br/>
+          </div>
+          <div class='googletypecontainer'>
+            <input id='google-type-shoe-store' data-enhanced='true' type='radio' name='googletype' value='shoe_store' class='googletype'>SHOE
+            STORE<br/>
+          </div>
+        </div>
+        <div style='display: table-row;'>
+          <div class='googletypecontainer'>
+            <input id='google-type-spa' data-enhanced='true' type='radio' name='googletype' value='spa' class='googletype'>SPA<br/>
+          </div>
+          <div class='googletypecontainer'>
+            <input id='google-type-stadium' data-enhanced='true' type='radio' name='googletype' value='stadium' class='googletype'>STADIUM<br/>
+          </div>
+          <div class='copyright'></div>
+        </div>
+      </div>
+    </div>
+    <div id="route-ui" class="map-control map-control-frame" style='display:none'>
+      <div id='route-ui-header' class='content-padding' style='display:inline-block;height:-webkit-fit-content;height: -moz-fit-content;height: intrinsic;width:inherit;padding:0px'>
+        <div data-role='controlgroup' data-type='horizontal' class='control-text' style="width: inherit;">
+          <button id='routeNavigate' data-mini="true" data-inline="true" class="ui-btn ui-btn-inline ui-nodisc-icon ui-icon-right ui-icon-turnByTurn ui-btn-icon-right" style="height: 25px;float: left"></button>
+          <button id='routeClose' data-role='none' class='ui-icon-lool-clear' style="height: 32px;width: 32px;float: right; "></button>
+
+        </div>
+      </div>
+      <div id="route-text" class="content-padding control-text scrollableWindow" style='overflow: auto;clear:both;'></div>
+      <div class='copyright' style="position:fixed;bottom: 0px;"></div>
+    </div>
+    </div>
+  </div>
+  <div id="posting_message" style='display:none'>
+    <%= t(:view_full)%>
+  </div>
+</div>
+</body>
+</html>

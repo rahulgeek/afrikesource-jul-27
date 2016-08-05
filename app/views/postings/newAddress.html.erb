@@ -1,0 +1,40 @@
+<div class="container" style="">
+  <% if @posting[:enterpise] == '1' %>
+
+      <div id="marketBanner"><%= t(:market) %></div>
+  <% end %>
+  <div class='col-lg-8'>
+    <h2><%= t(:address_title) %></h2>
+    <%= form_for @address, url: posting_create_address_url, method: :post do |f| %>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places,geometry?key=AIzaSyAim9hgtYAZ6YGOabhLc3rVvcjGYwpU3cc"></script>
+<%# include google maps %>
+<%# include marker code %>
+
+        <% if @posting[:types] == 'transportation' %>
+            <div class="form-group">
+              <%= f.label 'From' %><br>
+              <%= f.text_field :address_1, class: 'form-control' %><br>
+            </div>
+            <div class="form-group">
+              <%= f.label 'To' %><br>
+              <%= f.text_field :address_2, class: 'form-control' %><br>
+            </div>
+        <% else %>
+            <div class="form-group">
+              <%= f.label t(:address) %><br>
+              <%= f.text_field :address_1, class: 'form-control' %><br>
+            </div>
+        <% end %>
+        <div class="form-group">
+          <%= t(:drag_message) %><%= image_tag('markera-sm.png', size: '25x25', alt: 'A') %><%= t(:target_message) %>
+        </div>
+        <div id="googlemaps" style="height: 500px; width: 500px;border: black">
+          <%= requirejs_include_tag 'addLocation' %>
+
+        </div>
+        <%= f.hidden_field :lat %>
+        <%= f.hidden_field :lng %>
+        <%= f.submit t(:next), class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

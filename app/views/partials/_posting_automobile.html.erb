@@ -1,0 +1,43 @@
+<%= form_for @posting, url: @url, method: 'get' do |f| %>
+    <%= f.hidden_field :types %>
+<div class="col-lg-8">
+  <div class="col-lg-6">
+    <div class="form-group">
+      <%= f.label 'Post Title' %><br>
+      <%= f.text_field :posting_title, class: 'form-control' %><br>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="form-group">
+      <%= f.label 'Price' %><br>
+      <%= f.text_field :posting_price, class: 'form-control' %><br>
+    </div>
+  </div>
+  <div class=" col-lg-4">
+    <div class="form-group">
+      <%= f.label 'Make' %><br>
+      <%= f.text_field :make, class: 'form-control' %><br>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="form-group">
+      <%= f.label 'Model' %><br>
+      <%= f.text_field :model, class: 'form-control' %><br>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="form-group">
+      <%= f.label 'Mileage' %><br>
+      <%= f.text_field :mileage, class: 'form-control' %><br>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <%= f.label 'Post Body' %><br>
+    <%= f.text_area :posting_description, class: 'form-control', rows: "10" %>
+  </div>
+  <br>
+
+  <%= f.file_field :image %>
+  <%= f.submit 'Next', class: 'btn'   %>
+</div>
+<% end %>

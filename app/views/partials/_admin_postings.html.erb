@@ -1,0 +1,67 @@
+<%= grid(@postings, show_filters: :when_filtered, upper_pagination_panel: true) do |g|
+#    g.column user_table_id: 'User Id', attribute: 'user_table_id', assoc: :user_table  do |task|
+#      task.first_name
+#    end
+  g.column name: 'Post Id', attribute: 'id' do |task|
+    link_to task.id, posting_path(task.id)
+  end
+  g.column name: 'User', attribute: 'first_name', assoc: :user_table do |task|
+    if task.user_table.nil?
+      "Blank"
+    else
+      link_to task.user_table.userid, edit_user_table_path(task.user_table.id)
+    end
+  end
+  g.column name: 'Business', attribute: 'business', assoc: :user_table do |task|
+    if task.user_table.nil?
+      "Blank"
+    else
+      task.user_table.business
+    end
+  end
+
+  g.column name: 'Telephone', attribute: 'phone', assoc: :user_table do |task|
+    if task.user_table.nil?
+      "Blank"
+    else
+      task.user_table.phone
+    end
+  end
+  g.column name: 'Posting Title', attribute: 'posting_title' do |task|
+    link_to task.posting_title, posting_edit_body_path(task.id)
+  end
+
+  g.column name: 'Types', attribute: 'types' do |task|
+    task.types
+  end
+  g.column name: 'Market', attribute: 'enterprise' do |task|
+    if task.enterprise == '1' || task.enterprise == 1
+      'Yes'
+    else
+      'No'
+    end
+  end
+  g.column name: 'Approved', attribute: 'approved' do |task|
+    if task.approved.nil?
+      'No'
+    else
+      'Yes'
+    end
+  end
+  g.column name: 'Entered Date', attribute: 'created_at', filter_type: :rails_datetime_helper do |task|
+    task.created_at.to_s()
+  end
+  g.column attribute: 'approved' do |task|
+    #logic to turn off the approve button if it is over the limit
+    capture do
+      if task.approved.nil?
+          concat button_to "Approve", admin_approve_posting_path(task), class: 'btn btn-success'
+      else
+        concat button_to "Disable", admin_disable_posting_path(task), class: 'btn btn-warning'
+
+      end
+      concat button_to "Delete", admin_delete_posting_path(task), class: 'btn btn-danger'
+    end
+  end
+
+end -%>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Afrikelist</title>
+  <%= csrf_meta_tags %>
+  <%# https://stackoverflow.com/questions/10225645/rails-override-head-page-element-when-using-a-partial-or-a-specific-controll
+  %>
+  <% if content_for? :for_head %>
+      <%= yield :for_head %>
+  <% end %>
+</head>
+<body class="<%= controller_name %> <%= action_name %>">
+
+<% if controller_name != 'pages' %>
+    <link href="https://fonts.googleapis.com/css?family=Michroma:400&subset=latin,cyrillic-ext,greek-ext,greek,latin-ext,cyrillic" type="text/css" rel="stylesheet">
+    <div style="top:0px; width:100%;background-color:white;z-index:9999">
+      <h2 style="font-size:45px;font-weight:400px;font-family: Michroma;width:290px;margin:auto;">
+        <% if session[:enterprise] != 1 %>
+        <a href="/" style="text-decoration: none;color:black !important;">
+          <%= image_tag 'dark_logo_white_background.jpg', size: '300x100', alt: 'AfrikeList' %>
+        </a></h2>
+            <%else %>
+      <% if @language == :fr %>
+          <%= link_to image_tag('dark_logo_transparent_background_boutique.png', size: '200x60', alt: 'AfrikeList'), pages_show_path, {:style => 'text-decoration: none;color:#000000'} %>
+      <% else %>
+          <%= link_to image_tag('dark_logo_transparent_background_market.png', size: '200x60', alt: 'AfrikeList'), pages_show_path, {:style => 'text-decoration: none;color:#000000'} %>
+      <% end %>
+            <% end %>
+    </div>
+    <nav class="navbar navbar-default">
+      <div class="nav navbar-header">
+
+    <% if controller_name != 'login' || (controller_name == 'login' && action_name == 'edit') %>
+
+    <% if logged_in? %>
+                <% if is_admin? %>
+                  <%= render :partial => 'partials/menu_vendor' if is_admin? %>
+                <% elsif is_vendor? %>
+                  <%= render :partial => 'partials/menu_vendor' if is_vendor? %>
+                <% elsif is_user? %>
+                  <%= render :partial => 'partials/menu_user' if is_user? %>
+                <% else %>
+                    <%= render :partial => 'partials/menu_home' if is_user? %>
+                <% end %>
+      <% end %>
+        <% else %>
+            <%= render :partial => 'partials/menu_home' if is_user? %>
+    <% end %>
+<% end %>
+</div>
+</nav>
+<% if controller_name != 'pages' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+    <%= javascript_include_tag 'rails.validations' %>
+    <%= javascript_include_tag 'blueimp-gallery-all', 'data-turbolinks-track' => false %>
+<% else %>
+
+<% end %>
+<%= yield %>
+<% if controller_name != 'admin' %>
+  <!--form style="position:fixed;bottom:0px;right:0px;" data-role="none"-->
+    <input id="contact_button" TYPE="button" VALUE= "<%= t :contact %>" data-role='none' onClick="parent.location='mailto:alioune.ndiaye@afrikelist.com?subject=Questions'"
+           style="width: 120px;height:40px;background-color: gold;position: fixed;bottom: 0px;right:0px;border:1px;">
+
+  <!--/form-->
+<% end %>
+</body>
+</html>

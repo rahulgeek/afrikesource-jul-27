@@ -1,0 +1,133 @@
+<%= form_for @posting, :html => {:multipart => true}, url: @url, method: @method do |f| %>
+    <%= f.hidden_field :types %>
+    <div class="col-sm-7">
+      <div class="form-group">
+        <%= f.label t :category %>: <%= t @posting.types %>
+      </div>
+    </div>
+    <div class=" col-sm-6">
+      <div class="form-group">
+        <%= f.label t :post_title %><br>
+        <%= f.text_field :posting_title, class: 'form-control' %><br>
+      </div>
+    </div>
+    <%= session[:enterprise] %>
+    <% if session[:enterprise] != 1 && @posting.types !='events' %>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <%= f.label t :price %><br>
+        <%= f.text_field :posting_price, class: 'form-control' %>
+      </div>
+    </div>
+    <% end %>
+
+    <div class="col-sm-10">
+      <div class="form-group">
+        <%= f.label t :enable_sharing %>
+        <% if is_vendor? || is_admin? || !@posting.persisted? %>
+            <%= f.check_box :enable_sharing, class: '' %><br>
+        <% else %>
+            <% if @posting[:enable_sharing].nil? %>
+                NO
+            <% else %>
+                YES
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+    <%= f.fields_for :address do |ff| %>
+        <div class="col-sm-10">
+          <div class="form-group">
+            <%= ff.label t(:address) %><br>
+            <%= ff.text_field :address_1, class: 'form-control', readonly: true %>
+            <br> <%= link_to 'Edit Address', posting_edit_address_path(@posting) %>
+          </div>
+        </div>
+        <% link_to posting_show_address_path %>
+    <% end %>
+    <% if @posting.address.nil? && !@posting[:id].nil?%>
+        <div class="col-sm-10">
+          <div class="form-group">
+
+       <%= link_to t(:missing_address_click), posting_new_address_path(@posting) %>
+            </div>
+          </div>
+        <% end %>
+    <% if @posting.nil? || session[:enterprise] != 1 && @posting.types != 'events' %>
+      <% if @posting[:types] == 'automobile' or @posting[:types] == 'electronics' %>
+        <div class=" col-sm-4 form-group">
+            <%= f.label t :make %><br>
+            <%= f.text_field :make, class: 'form-control' %><br>
+        </div>
+        <div class="col-sm-4 form-group">
+            <%= f.label t :model %><br>
+            <%= f.text_field :model, class: 'form-control' %><br>
+          </div>
+      <% end %>
+
+      <% if @posting[:types] == 'automobile' %>
+          <div class="col-sm-4 form-group">
+              <%= f.label t :mileage %><br>
+              <%= f.text_field :mileage, class: 'form-control' %><br>
+          </div>
+      <% end %>
+    <% else %>
+      <%# only appears for events (facebook) and enterprise (market) %>
+      <div class="col-sm-12">
+        <div class="form-group col-sm-3">
+          <%= f.label 'Facebook:' %>
+          <%= f.text_field :url1, class: 'form-control' %>
+        </div>
+        <%# does not appear for events %>
+        <% if @posting[:types] != 'events' %>
+        <div class="form-group col-sm-3">
+          <%= f.label 'Website' %>
+          <%= f.text_field :url2, class: 'form-control' %>
+        </div>
+      <% end %>
+      </div>
+    <% end %>
+    <div class="col-sm-12 form-group">
+
+      <% if session[:enterprise] == 1 %>
+        <%= f.label t :post_market_body %>
+      <% else %>
+          <%= f.label t :post_body %><br>
+      <% end %>
+        <%= f.text_area :posting_description, class: 'form-control', rows: "10" %>
+
+    </div>
+    <%#3 note that market/enterprise postings, they have the ability to enter in descriptions for the captions. %>
+
+    <%= f.hidden_field :enterprise %>
+      <%= f.fields_for :post_attachments do |post_attachment| %>
+          <div class="post_attachment_fields">
+            <div class="form-group col-sm-3" >
+              <div style="height: 200px;width: 200px;">
+              <%= image_tag post_attachment.object.image_url(:thumb) %>
+              </div>
+              <% if @posting[:enterprise] == 1 || @posting[:types] != 'events' %>
+                  <%= t(:image_title) %>
+              <%= post_attachment.text_field :description %><br>
+              <% end %>
+              <%#= post_attachment.check_box :_destroy %>
+              <%#= post_attachment.label :delete %>
+
+            </div>
+          </div>
+      <% end %>
+    <div class="col-sm-12" >
+
+      <div class="form-group">
+
+
+      <% if @posting.persisted? %>
+            <%= link_to t(:edit_image_list), posting_edit_images_path(@posting[:id]), method: 'get', class: 'btn btn-info' %>
+          <%= button_to t(:save), posting_update_body_path, method: 'post', class: 'btn' %>
+      <% else %>
+          <%= f.submit t(:next), class: 'btn btn-primary' %>
+      <% end %>
+        </div>
+    </div>
+
+<% end %>

@@ -1,0 +1,103 @@
+<div class="container" style="margin-top: 50px;">
+<div>
+  <% if session[:enterprise] == 1  %>
+    <%= t(:market_posting_message) %>
+
+  <% end %>
+  </div>
+  <div class="col-sm-8 col-sm-offset-2">
+  <h1 class="centerMessage"><%=t :posting_message %></h1>
+    </div>
+  <%= form_for(@posting, url: posting_body_url, method: 'get') do |f| %>
+      <div class="col-sm-3 col-sm-offset-2">
+        <%= f.label :types, t(:for_sale) %>
+        <div class='form-group'>
+          <%= f.radio_button(:types, 'animals') %>
+          <%= label_tag :Animals, t(:animals), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'appliances') %>
+          <%= label_tag :Appliances, t(:appliances), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'automobile') %>
+          <%= label_tag :Autos, t(:automobile), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'clothing') %>
+          <%= label_tag :Clothing, t(:clothing), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'sports') %>
+          <%= label_tag :Sports, t(:sports), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'computers') %>
+          <%= label_tag :Computers, t(:computers), class: 'basic' %><br>
+
+          <%= f.radio_button(:types, 'electronics') %>
+          <%= label_tag :Electronics, t(:electronics), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'furniture') %>
+          <%= label_tag :Furniture, t(:furniture), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'sports') %>
+          <%= label_tag :Sports, t(:sports), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'beauty') %>
+          <%= label_tag :Beauty, t(:beauty), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'tourism') %>
+          <%= label_tag :Tourism, t(:tourism), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'tv_audio') %>
+          <%= label_tag :Tv_audio, t(:tv_audio), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'cellphones') %>
+          <%= label_tag :Cellphone, t(:cellphones), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'miscellaneous') %>
+          <%= label_tag :Miscellaneous, t(:miscellaneous), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'auto_parts') %>
+          <%= label_tag :Auto_parts, t(:auto_parts), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'sports') %>
+          <%= label_tag :Sports, t(:sports), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'equipment') %>
+          <%= label_tag :Equipment, t(:equipment), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'hotels') %>
+          <%= label_tag :hotels, t(:hotels), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'bedbreakfast') %>
+          <%= label_tag :bedbreakfast, t(:bedbreakfast), class: 'basic' %><br>
+        </div>
+
+        </div>
+      <div class="col-sm-3 col-sm-offset-2">
+        <%= f.label :types, t(:housing) %>
+
+        <div class='form-group'>
+          <%= f.radio_button(:types, 'real_estate apartment') %>
+          <%= label_tag :apartement, t(:apartment), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'real_estate condo') %>
+          <%= label_tag :houses_condo, t(:houses_condos), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'real_estate offices') %>
+          <%= label_tag :offices_warehouse, t(:offices_warehouse), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'real_estate land') %>
+          <%= label_tag :land, t(:land), class: 'basic' %><br>
+        </div>
+        <%= f.label :types, t(:job_gigs) %>
+
+        <div class='form-group'>
+          <%= f.radio_button(:types, 'jobs_offered') %>
+          <%= label_tag :Jobs_Offered, t(:job_offer), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'jobs_search') %>
+          <%= label_tag :Jobs_search, t(:job_search), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'training_course') %>
+          <%= label_tag :training_and_course, t(:training_course), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'domestic_services') %>
+          <%= label_tag :domestic_services, t(:domestic_services), class: 'basic' %><br>
+        </div>
+        <%= f.label :types, 'Services' %>
+
+        <div class='form-group'>
+          <%= f.radio_button(:types, 'auto_rental') %>
+          <%= label_tag :Auto_Rentals, t(:auto_rental), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'courier') %>
+          <%= label_tag :Courier, t(:courier), class: 'basic' %><br>
+          <%= f.radio_button(:types, 'transportation') %>
+          <%= label_tag :Transportation, t(:transportation), class: 'basic' %><br>
+        </div>
+        <div class='form-group'>
+          <%= f.radio_button(:types, 'events') %>
+          <%= label_tag :events, t(:events), class: 'basic', style: 'background-color: orangered;color:white;' %><br>
+        </div>
+
+      </div>
+      <div class="col-sm-8 col-sm-offset-4">
+        <%= f.hidden_field :enterprise %>
+          <%= f.submit t(:next), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+  </div>

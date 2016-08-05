@@ -1,0 +1,15 @@
+<ul class="nav nav-pills">
+  <li><%= link_to   '<i class="glyphicon glyphicon-home" ></i>'.html_safe, pages_show_path %>
+  </li>
+  <li><%= link_to "Approve Pending", admin_list_pending_path %>
+  </li>
+  <li><%= link_to 'Postings', admin_list_postings_path %>
+  </li>
+  <li><%= link_to "Users", user_table_index_path %>
+  </li>
+  <li><%= link_to "Profile", edit_login_path(session[:user_id]) %>
+  </li>
+
+  <li><%= link_to "Logout", logout_path %>
+  </li>
+</ul>

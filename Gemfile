@@ -27,7 +27,8 @@ gem 'sprockets-rails','2.3.3'
 
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
-gem 'mysql2'
+gem "pg"
+#gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -65,6 +66,7 @@ gem 'font-awesome-sass'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry'
 end
 
 group :development do
