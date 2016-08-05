@@ -1,0 +1,200 @@
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to RenameUserToUserTable (20160229211514)
+  [1m[35m (26.3ms)[0m  RENAME TABLE `users` TO `user_table`
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160229211514')
+  [1m[36m (2.7ms)[0m  [1mCOMMIT[0m
+Migrating to AddImageToPostings (20160322171908)
+  [1m[35m (4.0ms)[0m  ALTER TABLE `postings` ADD `image` varchar(255)
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to AddImageToPostings (20160322171908)
+  [1m[35m (0.7ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160322171908')[0m
+  [1m[35m (3.5ms)[0m  COMMIT
+Migrating to CreatePostAttachments (20160401161322)
+  [1m[36m (26.0ms)[0m  [1mCREATE TABLE `post_attachments` (`id` int(11) auto_increment PRIMARY KEY, `posting_id` int(11), `image` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.7ms)[0m  BEGIN
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160401161322')[0m
+  [1m[35m (3.0ms)[0m  COMMIT
+Migrating to CreateTransports (20160429072955)
+  [1m[36m (21.1ms)[0m  [1mCREATE TABLE `transports` (`id` int(11) auto_increment PRIMARY KEY, `fromAddress` varchar(255), `toAddress` varchar(255), `date` datetime, `space` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160429072955')[0m
+  [1m[35m (3.0ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (1.6ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'afrikelistdb'
+  AND fk.table_name = 'post_attachments'
+
+  [1m[36m (5.7ms)[0m  [1mSHOW CREATE TABLE `post_attachments`[0m
+  [1m[35m (1.8ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'afrikelistdb'
+  AND fk.table_name = 'transports'
+
+  [1m[36m (1.1ms)[0m  [1mSHOW CREATE TABLE `transports`[0m
+  [1m[35m (1.6ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'afrikelistdb'
+  AND fk.table_name = 'user_table'
+
+  [1m[36m (1.4ms)[0m  [1mSHOW CREATE TABLE `user_table`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.3ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreateTransports (20160429072955)
+  [1m[36m (7.5ms)[0m  [1mDROP TABLE `transports`[0m
+  [1m[35mSQL (48.0ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160429072955'
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (1.3ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'afrikelistdb'
+  AND fk.table_name = 'post_attachments'
+
+  [1m[36m (1.1ms)[0m  [1mSHOW CREATE TABLE `post_attachments`[0m
+  [1m[35m (2.5ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'afrikelistdb'
+  AND fk.table_name = 'user_table'
+
+  [1m[36m (0.8ms)[0m  [1mSHOW CREATE TABLE `user_table`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.9ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreatePostAttachments (20160401161322)
+  [1m[36m (7.7ms)[0m  [1mDROP TABLE `post_attachments`[0m
+  [1m[35mSQL (4.3ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160401161322'
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (2.0ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'afrikelistdb'
+  AND fk.table_name = 'user_table'
+
+  [1m[36m (0.8ms)[0m  [1mSHOW CREATE TABLE `user_table`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.1ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to AddImageToPostings (20160322171908)
+  [1m[36mSQL (37.6ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160322171908'[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.9ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (1.5ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'afrikelistdb'
+  AND fk.table_name = 'user_table'
+[0m
+  [1m[35m (1.3ms)[0m  SHOW CREATE TABLE `user_table`
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to RenameUserToUserTable (20160229211514)
+  [1m[36m (6.1ms)[0m  [1mRENAME TABLE `user_table` TO `users`[0m
+  [1m[35mSQL (5.1ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160229211514'
+  [1m[36mActiveRecord::SchemaMigration Load (6.0ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (3.9ms)[0m  SELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'afrikelistdb'
+  AND fk.table_name = 'users'
+
+  [1m[36m (1.0ms)[0m  [1mSHOW CREATE TABLE `users`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.1ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreateUsers (20160226210412)
+  [1m[36m (27.5ms)[0m  [1mDROP TABLE `users`[0m
+  [1m[35mSQL (4.9ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160226210412'
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.1ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to RenamePosttableToPosting (20160224184312)
+  [1m[36mSQL (6.3ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20160224184312'[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.1ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.9ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to RenamePosttableToPosting (20160224184312)
+  [1m[35m (1.1ms)[0m  BEGIN
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160224184312')[0m
+  [1m[35m (4.9ms)[0m  COMMIT
+Migrating to CreateUsers (20160226210412)
+  [1m[36m (33.4ms)[0m  [1mCREATE TABLE `users` (`id` int(11) auto_increment PRIMARY KEY, `userid` varchar(20), `first_name` varchar(30), `last_name` varchar(30), `email` varchar(50), `phone` varchar(20), `address_1` varchar(60), `city` varchar(30), `state` varchar(20), `zipcode_postal` varchar(20), `country` varchar(30), `phone_type` varchar(2), `contact_by` varchar(10), `validation` varchar(50), `password_hash` varchar(256), `status` int(11), `level` varchar(10), `enterprise` smallint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.7ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160226210412')[0m
+  [1m[35m (3.9ms)[0m  COMMIT
+Migrating to RenameUserToUserTable (20160229211514)
+  [1m[36m (5.7ms)[0m  [1mRENAME TABLE `users` TO `user_table`[0m
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mSQL (1.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20160229211514')[0m
+  [1m[35m (3.8ms)[0m  COMMIT
+Migrating to AddImageToPostings (20160322171908)
+  [1m[36m (9.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.5ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160322171908')
+  [1m[36m (5.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePostAttachments (20160401161322)
+  [1m[35m (12.2ms)[0m  CREATE TABLE `post_attachments` (`id` int(11) auto_increment PRIMARY KEY, `posting_id` int(11), `image` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (1.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160401161322')
+  [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateTransports (20160429072955)
+  [1m[35m (13.7ms)[0m  CREATE TABLE `transports` (`id` int(11) auto_increment PRIMARY KEY, `fromAddress` varchar(255), `toAddress` varchar(255), `date` datetime, `space` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20160429072955')
+  [1m[36m (2.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.1ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (1.3ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'afrikelistdb'
+  AND fk.table_name = 'post_attachments'
+[0m
+  [1m[35m (0.7ms)[0m  SHOW CREATE TABLE `post_attachments`
+  [1m[36m (1.4ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'afrikelistdb'
+  AND fk.table_name = 'transports'
+[0m
+  [1m[35m (2.2ms)[0m  SHOW CREATE TABLE `transports`
+  [1m[36m (1.1ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'afrikelistdb'
+  AND fk.table_name = 'user_table'
+[0m
+  [1m[35m (1.7ms)[0m  SHOW CREATE TABLE `user_table`
