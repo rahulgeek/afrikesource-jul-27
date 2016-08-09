@@ -80,3 +80,8 @@ end
 #gem 'money' # currency conversion
 #gem 'goog_currency'
 gem 'open_exchange_rates'
+
+group :production do
+  gem 'rails_12factor'
+end
+
