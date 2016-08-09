@@ -77,3 +77,6 @@ group :development do
   gem 'spring'
 end
 
+#gem 'money' # currency conversion
+#gem 'goog_currency'
+gem 'open_exchange_rates'

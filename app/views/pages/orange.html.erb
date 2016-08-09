@@ -4,7 +4,11 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <title>Orange Money Transfer</title>
   <link rel="stylesheet" type="text/css" href="http://global.design-editor.com/v8/base.css"/>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
   <%= stylesheet_link_tag 'orange.css' %>
+  <%= javascript_include_tag 'orange.js' %>
+
 <html>
 <body>
 <div class="orange-container">
@@ -17,25 +21,25 @@
   <div class="container">
     <form>
       <div>
-       <h2> Sender</h2>           
-          <input type="text" placeholder=" Full Name">          
-          <input type="text" placeholder=" Address">       
-          <input type="text"  placeholder="Phone Number">          
-          <input type="text" placeholder="Expiration Date">
+       <h2> SIMULATION OF TRANSFER</h2> 
+       </div>
+       <div>              
+            Daily Conversion Rate: 1 USD = <span id="currency_rate"><%= get_fox_rate_for_usd%></span> XOF
+        </div>        
+          <h2>Credit to be sent</h2>
+          <input type="text" placeholder="USD" id="usd" required="true"> USD <br/>      
+          <input type="text" placeholder="XOF" id="xof" readonly="readonly" value="<%= get_fox_rate_for_usd%>"> XOF <br/>         
        </div>
 
        <div>
-        <h2>Company</h2>          
-          <input type="text" placeholder="Full Name">
-          <input type="text" placeholder="Account number">
+        <h2>Fees</h2>          
+          <input type="text" placeholder="Fees" id= "fees" readonly="readonly"> USD
        </div>
 
        <div>
-        <h2 class="money-input">Money</h2>
-          <input class="money-input-one" type="text" placeholder="Amount in CFA">
-          <input class="money-input-two" type="text" placeholder="Amount in US">
+        <h2>Total Transaction Cost</h2>
+          <input type="text" placeholder="TTUS" id= "ttus" readonly="readonly">
        </div>
-
         <div>
           <input type="submit" value="Submit">
         </div>
@@ -43,9 +47,6 @@
     </form>
   </div>
 </div>
-
-    
-
+   
 </body>
 </html>
-

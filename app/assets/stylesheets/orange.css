@@ -52,7 +52,7 @@ body{
      }
 
       input[type=text]{
-      width: 100%;
+      width: 30%;
       padding: 12px 20px;
       margin: 8px 0;
       display: inline-block;
@@ -62,8 +62,8 @@ body{
       }
 
       input[type=submit] {
-        width: 100%;
-        background-color: #000;
+        width: 20%;
+        background-color: #79d316;
         color: white;
         padding: 14px 20px;
         margin: 8px 0;

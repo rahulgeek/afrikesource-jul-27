@@ -125,6 +125,8 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
+    open_exchange_rates (0.4.1)
+      yajl-ruby
     pg (0.18.4)
     pkg-config (1.1.7)
     pry (0.10.4)
@@ -203,6 +205,7 @@ GEM
       activerecord (> 3.2)
       coffee-rails (> 3.2)
       kaminari (~> 0.16)
+    yajl-ruby (1.2.1)
 
 PLATFORMS
   ruby
@@ -225,6 +228,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  open_exchange_rates
   pg
   pry
   rails (= 4.2.5)
