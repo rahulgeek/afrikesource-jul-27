@@ -2,6 +2,7 @@ class UserTable < ActiveRecord::Base
   
   #self.table_name='user_table'
   has_many :postings
+  has_many :transaction_details
   #mount_uploader :logo, LogoUploader
   validates :email, presence: true, uniqueness: true
   validates :userid, presence: true, uniqueness: true
