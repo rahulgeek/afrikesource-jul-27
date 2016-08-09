@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
   before_filter :update_session_time
-  def show
-    binding.pry
+  def shows
     if !session[:user_id].nil?
       @user= UserTable.find(session[:user_id])
     end
