@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   before_filter :update_session_time
-  def shows
+  before_filter :check_login, only: :orange
+  def show
     if !session[:user_id].nil?
       @user= UserTable.find(session[:user_id])
     end
@@ -9,9 +10,12 @@ class PagesController < ApplicationController
   def events
 
   end
-  def orange
 
+  def orange
+    # binding.pry
+    
   end
+  
   def market
 
   end
@@ -27,12 +31,20 @@ class PagesController < ApplicationController
   def terms
 
   end
+
   def logged_in?
 
   end
 
-  def change_lang
+  def save_credits
+    #@payment_details = current_user.transaction_details.create(payment_details_params)
+  end
 
+  def paypal_pro
+    #puts "VM"
+  end
+
+  def change_lang
     if request.referer.nil?
       refer = root_url
     else
@@ -44,4 +56,17 @@ class PagesController < ApplicationController
     redirect_to refer
 
   end
+
+  private 
+
+  def check_login
+    unless !session[:user_id].nil?
+      flash[:notice]="You must be logged in first to view this page."
+      redirect_to root_url
+    end
+  end
+
+  # def payment_details_params
+  #   params.require(:payment_details).permit(:credits,:user_table_id)
+  # end
 end

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'pages/events'
   get 'pages/refund'
   get 'pages/privacy'
+  post 'save_credits'=> 'pages#save_credits'
+  post 'paypal_pro'=> 'pages#paypal_pro'
 
   scope "(:locale)", locale: /[a-zA-Z]{2}/ do
     get "change_lang/:lang" => "users#change_lang", :as => "change_lang"

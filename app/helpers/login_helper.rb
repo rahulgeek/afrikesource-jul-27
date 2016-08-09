@@ -23,7 +23,7 @@ module LoginHelper
   end
 
   def  current_user
-    return @current_user ||= UserTable.find(id: session[:user_id])
+    return @current_user ||= UserTable.find(session[:user_id])
   end
   def logged_in?
     logger.info("user id %p user_level %p" % [session[:user_id], session[:level] ])

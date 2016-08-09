@@ -19,6 +19,7 @@
   </header>
 
   <div class="container">
+    <%= form_tag save_credits_path, :method => :post do%>
     <form>
       <div>
        <h2> SIMULATION OF TRANSFER</h2> 
@@ -27,7 +28,7 @@
             Daily Conversion Rate: 1 USD = <span id="currency_rate"><%= get_fox_rate_for_usd%></span> XOF
         </div>        
           <h2>Credit to be sent</h2>
-          <input type="text" placeholder="USD" id="usd" required="true"> USD <br/>      
+          <input type="text" placeholder="USD" id="usd" name="payment_details[credits]" required="true"> USD <br/>      
           <input type="text" placeholder="XOF" id="xof" readonly="readonly" value="<%= get_fox_rate_for_usd%>"> XOF <br/>         
        </div>
 
@@ -41,10 +42,10 @@
           <input type="text" placeholder="TTUS" id= "ttus" readonly="readonly">
        </div>
         <div>
-          <input type="submit" value="Submit">
+          <input type="submit" value="Proced to payment &nbsp; >>">
         </div>
       
-    </form>
+    <%end%>
   </div>
 </div>
    
