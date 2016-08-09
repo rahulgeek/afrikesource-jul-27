@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_filter :update_session_time
-  before_filter :check_login, only: :orange
+  before_filter :check_login, only: :save_credits
   def show
     if !session[:user_id].nil?
       @user= UserTable.find(session[:user_id])
@@ -45,6 +45,7 @@ class PagesController < ApplicationController
   end
 
   def change_lang
+    
     if request.referer.nil?
       refer = root_url
     else
