@@ -37,11 +37,14 @@ class PagesController < ApplicationController
   end
 
   def save_credits
-    #@payment_details = current_user.transaction_details.create(payment_details_params)
+    @payment_details = current_user.transaction_details.create(payment_details_params)
   end
 
   def paypal_pro
-    #puts "VM"
+    @paypal_pro = PaypalPro.new.paypalCall(params[:paypal_pro])
+    respond_to do |format|
+      format.json { render json: @paypal_pro }
+    end
   end
 
   def change_lang
@@ -62,12 +65,17 @@ class PagesController < ApplicationController
 
   def check_login
     unless !session[:user_id].nil?
-      flash[:notice]="You must be logged in first to view this page."
-      redirect_to root_url
+      flash[:notice]="You must be logged in to proceed for payment."
+      redirect_to new_login_url
     end
   end
 
-  # def payment_details_params
-  #   params.require(:payment_details).permit(:credits,:user_table_id)
-  # end
+  def payment_details_params
+    params.require(:payment_details).permit(:credits,:user_table_id,:ttus)
+  end
+
+  def paypal_pro_params
+    params.require(:paypal_pro).permit(:creditCardType,:paymentAction,:amount,:currencyCode,:firstName,
+      :last_name,:creditCardNumber,:expMonth,:expYear,:cvv)
+    end
 end

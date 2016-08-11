@@ -1,1 +1,352 @@
-<h1>Coming Soon</h1>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<%= javascript_include_tag "jquery.creditCardValidator.js"%>
+<%= stylesheet_link_tag "style"%>
+<style type="text/css">
+    .card-payment {
+    height: 476px;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+}
+h3 {
+    font-size: 30px;
+    line-height: 50px;
+    margin: 0 0 28px;
+    text-align: center;
+}
+ol, ul {
+    list-style: outside none none;
+}
+ul, h4{
+    border: 0 none;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+form {
+    float: none;
+}
+form, #orderInfo {
+    background-color: #f9f9f7;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    left: 0;
+    margin: 0 auto;
+    padding: 10px 10px;
+    max-width: 320px;
+}
+form li {
+    margin: 8px 0;
+}
+form label {
+    color: #555;
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+}
+form #card_number {
+    background-image: url("/assets/images.png"), url("/assets/images.png");
+    background-position: 2px -121px, 260px -61px;
+    background-repeat: no-repeat;
+    background-size: 120px 361px, 120px 361px;
+    padding-left: 54px;
+    width: 225px;
+}
+form input {
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    box-sizing: content-box;
+    color: #333;
+    display: block;
+    font-size: 18px;
+    height: 32px;
+    padding: 0 5px;
+    width: 275px;
+    outline: none;
+}
+form input::-moz-placeholder {
+    color: #ddd;
+    opacity: 1;
+}
+.payment-btn {
+    width: 100%;
+    height: 34px;
+    padding: 0;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.2);
+    border: 1px solid;
+    border-color: #005fb3;
+    background: #0092d1;
+    border-radius: 4px;
+}
+.payment-btn:disabled{opacity: 0.2;}
+form li .help {
+    color: #aaa;
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 14px;
+    padding-top: 14px;
+}
+.vertical {
+    overflow: hidden;
+}
+.vertical li {
+    float: left;
+    width: 95px;
+}
+.vertical input {
+    width: 68px;
+}
+.list {
+    color: #767670;
+    font-size: 16px;
+    list-style: outside none disc;
+    margin-bottom: 28px;
+    margin-left: 25px;
+}
+.card-payment .numbers {
+    background-color: #fff;
+    border: 1px solid #bbc;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 28px;
+    padding: 14px 20px;
+    z-index: 10;
+}
+.card-payment .numbers p {
+    margin-bottom: 0;
+        margin-top: 0;
+}
+.card-payment .numbers .list {
+    margin-bottom: 0;
+    margin-left: 0px;
+}
+.required{border: 1px solid #EA4335;}
+#orderInfo p span{color: #FB4314;}
+</style>
+
+<!-- '' => '',
+        '' => $payableAmount,
+        '' => 'USD',
+        'creditCardType' => $_POST['card_type'],
+        'creditCardNumber' => trim(str_replace(" ","",$_POST['card_number'])),
+        'expMonth' => $_POST['expiry_month'],
+        'expYear' => $_POST['expiry_year'],
+        'cvv' => $_POST['cvv'],
+        '' => $firstName,
+        'lastName' => $lastName,
+        'city' => $city,
+        'zip'   => $zipcode,
+        '' => $countryCode, -->
+
+
+<div id="paymentSection">
+    <%= form_tag "#",method: :post,id:"paymentForm" do %>
+
+        <h4>Payable amount: $<%= @payment_details.ttus%> USD</h4>
+        <ul>
+            <input type="hidden" name="paypal_pro[creditCardType]" id="card_type" value=""/>
+            
+            <input type="hidden" name="paypal_pro[paymentAction]" id="paymentAction" value="Sale"/>
+            <input type="hidden" name="paypal_pro[amount]" id="amount" value="<%= @payment_details.ttus%>"/>
+            <input type="hidden" name="paypal_pro[currencyCode]" id="currencyCode" value="GBP"/>
+            <input type="hidden" name="paypal_pro[city]" id="city" value="<%= current_user.city%>"/>
+            <input type="hidden" name="paypal_pro[zip]" id="zipcode_postal" value="<%= current_user.zipcode_postal%>"/>
+            <input type="hidden" name="paypal_pro[countryCode]" id="countryCode" value="GB<%#= current_user.country%>"/>
+
+            <li>
+                <label for="card_number">Card number (<a href="javascript:void(0);" id="sample-numbers-trigger">try one of these</a>)</label>
+                <div class="card-payment numbers" style="display: none;">
+                    <p>Try some of these numbers:</p>
+                    <ul class="list">
+                        <li><a href="javascript:void(0);">4000 0000 0000 0002</a></li>
+                        <li><a href="javascript:void(0);">5018 0000 0009</a></li>
+                        <li><a href="javascript:void(0);">5100 0000 0000 0008</a></li>
+                        <li><a href="javascript:void(0);">6011 0000 0000 0004</a></li>
+                    </ul>
+                </div>
+                <input type="text" placeholder="1234 5678 9012 3456" id="card_number" name="paypal_pro[creditCardNumber]" class="">
+                <small class="help">This demo supports Visa, American Express, Maestro, MasterCard and Discover.</small>
+            </li>
+            <li class="vertical">
+                <ul>
+                    <li>
+                        <label for="expiry_month">Expiry month</label>
+                        <input type="text" placeholder="MM" maxlength="5" id="expiry_month" name="paypal_pro[expMonth]">
+                    </li>
+                    <li>
+                        <label for="expiry_year">Expiry year</label>
+                        <input type="text" placeholder="YYYY" maxlength="5" id="expiry_year" name="paypal_pro[expYear]">
+                    </li>
+                    <li>
+                        <label for="cvv">CVV</label>
+                        <input type="text" placeholder="123" maxlength="3" id="cvv" name="paypal_pro[cvv]">
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <label for="name_on_card">Name on card</label>
+                <label>First Name</label>
+                <input type="text" placeholder="First Name" id="first_name" name="paypal_pro[first_name]" required="">
+                <label>Last Name</label>
+                <input type="text" placeholder="Last Name" id="last_name" name="paypal_pro[last_name]" required="">
+            </li>
+            <li><input type="button" name="card_submit" id="cardSubmitBtn" value="Proceed" class="payment-btn" disabled="true" ></li>
+            <p style="color:#EA0075;">Note that: This demo will working with PayPal sandbox accounts.</p>
+        </ul>
+    <%end%>
+</div>
+<div id="orderInfo" style="display: none;"></div>
+
+<script type="text/javascript">
+    function cardFormValidate(){
+    var cardValid = 0;
+      
+    //Card validation
+    $('#card_number').validateCreditCard(function(result) {
+        var cardType = (result.card_type == null)?'':result.card_type.name;
+        if(cardType == 'Visa'){
+            var backPosition = result.valid?'2px -163px, 260px -87px':'2px -163px, 260px -61px';
+        }else if(cardType == 'MasterCard'){
+            var backPosition = result.valid?'2px -247px, 260px -87px':'2px -247px, 260px -61px';
+        }else if(cardType == 'Maestro'){
+            var backPosition = result.valid?'2px -289px, 260px -87px':'2px -289px, 260px -61px';
+        }else if(cardType == 'Discover'){
+            var backPosition = result.valid?'2px -331px, 260px -87px':'2px -331px, 260px -61px';
+        }else if(cardType == 'Amex'){
+            var backPosition = result.valid?'2px -121px, 260px -87px':'2px -121px, 260px -61px';
+        }else{
+            var backPosition = result.valid?'2px -121px, 260px -87px':'2px -121px, 260px -61px';
+        }
+        $('#card_number').css("background-position", backPosition);
+        if(result.valid){
+            $("#card_type").val(cardType);
+            $("#card_number").removeClass('required');
+            cardValid = 1;
+        }else{
+            $("#card_type").val('');
+            $("#card_number").addClass('required');
+            cardValid = 0;
+        }
+    });
+      
+    //Form validation
+    var first_name = $("#first_name").val();
+    var last_name = $("#second_name").val();
+    var expMonth = $("#expiry_month").val();
+    var expYear = $("#expiry_year").val();
+    var cvv = $("#cvv").val();
+    var regName = /^[a-z ,.'-]+$/i;
+    var regMonth = /^01|02|03|04|05|06|07|08|09|10|11|12$/;
+    var regYear = /^2016|2017|2018|2019|2020|2021|2022|2023|2024|2025|2026|2027|2028|2029|2030|2031$/;
+    var regCVV = /^[0-9]{3,3}$/;
+    if (cardValid == 0) {
+        $("#card_number").addClass('required');
+        $("#card_number").focus();
+        return false;
+    }else if (!regMonth.test(expMonth)) {
+        $("#card_number").removeClass('required');
+        $("#expiry_month").addClass('required');
+        $("#expiry_month").focus();
+        return false;
+    }else if (!regYear.test(expYear)) {
+        $("#card_number").removeClass('required');
+        $("#expiry_month").removeClass('required');
+        $("#expiry_year").addClass('required');
+        $("#expiry_year").focus();
+        return false;
+    }else if (!regCVV.test(cvv)) {
+        $("#card_number").removeClass('required');
+        $("#expiry_month").removeClass('required');
+        $("#expiry_year").removeClass('required');
+        $("#cvv").addClass('required');
+        $("#cvv").focus();
+        return false;
+    }else if (!regName.test(first_name)) {
+        $("#card_number").removeClass('required');
+        $("#expiry_month").removeClass('required');
+        $("#expiry_year").removeClass('required');
+        $("#cvv").removeClass('required');
+        $("#first_name").addClass('required');
+        $("#first_name").focus();
+        return false;
+    }else if (!regName.test(last_name)) {
+        $("#card_number").removeClass('required');
+        $("#expiry_month").removeClass('required');
+        $("#expiry_year").removeClass('required');
+        $("#cvv").removeClass('required');
+        $("#first_name").removeClass('required');
+        $("#last_name").addClass('required');
+        $("#last_name").focus();
+        return false;
+    }
+    else{
+        $("#card_number").removeClass('required');
+        $("#expiry_month").removeClass('required');
+        $("#expiry_year").removeClass('required');
+        $("#cvv").removeClass('required');
+        $("#first_name").removeClass('required');
+        $("#last_name").removeClass('required');
+        $('#cardSubmitBtn').prop('disabled', false);  
+        return true;
+    }
+}
+
+$(document).ready(function() {
+    //Demo card numbers
+    $('.card-payment.numbers li').wrapInner('<a href="javascript:void(0);"></a>').click(function(e) {
+        e.preventDefault();
+        $('.card-payment.numbers').slideUp(100);
+        cardFormValidate()
+        return $('#card_number').val($(this).text()).trigger('input');
+    });
+    $('body').click(function() {
+        return $('.card-payment.numbers').slideUp(100);
+    });
+    $('#sample-numbers-trigger').click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        return $('.card-payment.numbers').slideDown(100);
+    });
+    
+    //Card form validation on input fields
+    $('#paymentForm input[type=text]').on('keyup',function(){
+        cardFormValidate();
+    });
+
+     //Submit card form
+    $("#cardSubmitBtn").on('click',function(){
+        if (cardFormValidate()) {
+            var formData = $('#paymentForm').serialize();
+            $.ajax({
+                type:'POST',
+                url:'/paypal_pro',
+                dataType: "json",
+                data:formData,
+                beforeSend: function(){  
+                    $("#cardSubmitBtn").val('Processing....');
+                },
+                success:function(data){
+                    if (data.status == 1) {
+                        $('#paymentSection').slideUp('slow');
+                        $('#orderInfo').slideDown('slow');
+                        $('#orderInfo').html('<p>Order <span>#'+data.orderID+'</span> has been submitted successfully.</p>');
+                    }else{
+                        $('#paymentSection').slideUp('slow');
+                        $('#orderInfo').slideDown('slow');
+                        $('#orderInfo').html('<p>Wrong card details given, please try again.</p>');
+                    }
+                }
+            });
+        }
+    });
+});
+
+</script>

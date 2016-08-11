@@ -11,6 +11,7 @@
 
 <html>
 <body>
+<%= render "partials/flash"%>
 <div class="orange-container">
   <header>
     <h1>AfrikeList :</h1>
@@ -39,7 +40,7 @@
 
        <div>
         <h2>Total Transaction Cost</h2>
-          <input type="text" placeholder="TTUS" id= "ttus" readonly="readonly">
+          <input type="text" placeholder="TTUS" id= "ttus" name="payment_details[ttus]" readonly="readonly">
        </div>
         <div>
           <input type="submit" value="Proced to payment &nbsp; >>">
