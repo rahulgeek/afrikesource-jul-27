@@ -9,9 +9,9 @@ class PaypalPro
                   :ackSuccess,:ackSuccessWarning
     
     def initialize 
-     @apiUsername = 'rahulc_api1.yopmail.com'
-     @apiPassword = 'TJXGMTBZC9J2QQ2H'
-     @apiSignature = 'ASAvnT2eT-FBBm1B796507hxwRdnxxGsnA17z9g8zCK0o0abuCAR.-AFNxGU4'
+     @apiUsername = 'moyadevijayshree-facilitator_api1.gmail.com'
+     @apiPassword = '9PFX5HK88N72U4JX'
+     @apiSignature = 'An5ns1Kso7MWUdW4ErQKJJJ4qi4-AH9Uh0JQ6Y77SnkyaikoHHdJhadp'
      @apiEndpoint = 'https://api-3t.sandbox.paypal.com/nvp'
      @subject = ''
      @authToken = ''
@@ -68,7 +68,6 @@ class PaypalPro
         uri = URI(self.apiEndpoint)
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = true
-
         response = http.post(uri.path, @nvpreq ,{}) 
         
         CGI::parse(response.body)

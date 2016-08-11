@@ -337,7 +337,7 @@ $(document).ready(function() {
                     if (data.status == 1) {
                         $('#paymentSection').slideUp('slow');
                         $('#orderInfo').slideDown('slow');
-                        $('#orderInfo').html('<p>Order <span>#'+data.orderID+'</span> has been submitted successfully.</p>');
+                        $('#orderInfo').html('<p>Order <span>#'+data.TRANSACTIONID[0]+'</span> has been submitted successfully.</p><br/> <button style="margin-left: 114px; width: 71px; height: 42px;" onclick="window.location = \'/\'">Ok</button>');
                     }else{
                         $('#paymentSection').slideUp('slow');
                         $('#orderInfo').slideDown('slow');

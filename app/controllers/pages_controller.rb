@@ -42,6 +42,7 @@ class PagesController < ApplicationController
 
   def paypal_pro
     @paypal_pro = PaypalPro.new.paypalCall(params[:paypal_pro])
+    @paypal_pro.merge!({"status"=>1}) if @paypal_pro.include?"TRANSACTIONID"
     respond_to do |format|
       format.json { render json: @paypal_pro }
     end
