@@ -152,6 +152,7 @@ form li .help {
 
         <h4>Payable amount: $<%= @payment_details.ttus%> USD</h4>
         <ul>
+            <input type="hidden" name="payment_id" id="payment_id" value="<%=@payment_details.id %>"/>
             <input type="hidden" name="paypal_pro[creditCardType]" id="card_type" value=""/>
             
             <input type="hidden" name="paypal_pro[paymentAction]" id="paymentAction" value="Sale"/>

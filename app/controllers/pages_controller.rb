@@ -42,7 +42,12 @@ class PagesController < ApplicationController
 
   def paypal_pro
     @paypal_pro = PaypalPro.new.paypalCall(params[:paypal_pro])
-    @paypal_pro.merge!({"status"=>1}) if @paypal_pro.include?"TRANSACTIONID"
+
+    if success?
+      @paypal_pro.merge!({"status"=>1})
+      @transaction = TransactionDetail.find(params[:payment_id])
+      @transaction.update_attributes(:transaction_id=>@paypal_pro["TRANSACTIONID"].first)
+    end
     respond_to do |format|
       format.json { render json: @paypal_pro }
     end
@@ -71,6 +76,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def success?
+    @paypal_pro.include?"TRANSACTIONID"
+  end
+
   def payment_details_params
     params.require(:payment_details).permit(:credits,:user_table_id,:ttus)
   end
@@ -78,5 +87,5 @@ class PagesController < ApplicationController
   def paypal_pro_params
     params.require(:paypal_pro).permit(:creditCardType,:paymentAction,:amount,:currencyCode,:firstName,
       :last_name,:creditCardNumber,:expMonth,:expYear,:cvv)
-    end
+  end
 end
