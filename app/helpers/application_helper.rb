@@ -1,4 +1,3 @@
-require 'exchange'
 module ApplicationHelper
 	def get_fox_rate_for_usd
 		"593"
