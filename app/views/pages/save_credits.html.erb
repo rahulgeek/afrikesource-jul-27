@@ -162,7 +162,7 @@ form li .help {
             <input type="hidden" name="paypal_pro[zip]" id="zipcode_postal" value="<%= current_user.zipcode_postal%>"/>
             <input type="hidden" name="paypal_pro[countryCode]" id="countryCode" value="GB<%#= current_user.country%>"/>
 
-            <li>
+            <!-- <li>
                 <label for="card_number">Card number (<a href="javascript:void(0);" id="sample-numbers-trigger">try one of these</a>)</label>
                 <div class="card-payment numbers" style="display: none;">
                     <p>Try some of these numbers:</p>
@@ -173,8 +173,8 @@ form li .help {
                         <li><a href="javascript:void(0);">6011 0000 0000 0004</a></li>
                     </ul>
                 </div>
-                <input type="text" placeholder="1234 5678 9012 3456" id="card_number" name="paypal_pro[creditCardNumber]" class="">
-                <small class="help">This demo supports Visa, American Express, Maestro, MasterCard and Discover.</small>
+                <input type="text" placeholder="1234 5678 9012 3456" id="card_number" name="paypal_pro[creditCardNumber]" class=""> -->
+                <small class="help">Supports Visa, American Express, Maestro, MasterCard and Discover.</small>
             </li>
             <li class="vertical">
                 <ul>
@@ -200,7 +200,7 @@ form li .help {
                 <input type="text" placeholder="Last Name" id="last_name" name="paypal_pro[last_name]" required="">
             </li>
             <li><input type="button" name="card_submit" id="cardSubmitBtn" value="Proceed" class="payment-btn" disabled="true" ></li>
-            <p style="color:#EA0075;">Note that: This demo will working with PayPal sandbox accounts.</p>
+            <!-- <p style="color:#EA0075;">Note: This demo will be working with PayPal sandbox accounts.</p> -->
         </ul>
     <%end%>
 </div>
