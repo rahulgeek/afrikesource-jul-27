@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'pages/events'
   get 'pages/refund'
   get 'pages/privacy'
-  post 'save_credits'=> 'pages#save_credits'
+  get 'save_credits'=> 'pages#save_credits'
   post 'paypal_pro'=> 'pages#paypal_pro'
 
   scope "(:locale)", locale: /[a-zA-Z]{2}/ do

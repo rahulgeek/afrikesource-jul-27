@@ -20,7 +20,7 @@
   </header>
 
   <div class="container">
-    <%= form_tag save_credits_path, :method => :post do%>
+    <%= form_tag save_credits_path, :method => :get do%>
     <!-- <form> -->
       <div>
        <h2> SIMULATION OF TRANSFER</h2> 
@@ -44,7 +44,7 @@
           <input type="text" placeholder="TTUS" id= "ttus" name="payment_details[ttus]" readonly="readonly">
        </div>
         <div>
-          <input type="submit" id="proceed" value="Proced to payment &nbsp; >>">
+          <input type="submit" id="proceed" value="Proceed to Payment &nbsp; >>">
         </div>
       
     <%end%>

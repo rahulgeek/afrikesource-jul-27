@@ -72,6 +72,7 @@ class PagesController < ApplicationController
   def check_login
     unless !session[:user_id].nil?
       flash[:notice]="You must be logged in to proceed for payment."
+      session["store_url"] = save_credits_url(params)
       redirect_to new_login_url
     end
   end

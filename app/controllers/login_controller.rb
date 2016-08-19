@@ -34,7 +34,11 @@ class LoginController < ApplicationController
         end
         update_session_time
 
-        if is_admin? || is_vendor?
+        if session["store_url"]
+          stored_location = session["store_url"]
+          session["store_url"] = nil
+          redirect_to stored_location and return         
+        elsif is_admin? || is_vendor?
           redirect_to admin_list_postings_path
           return
         end
