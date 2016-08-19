@@ -14,8 +14,8 @@
 <%= render "partials/flash"%>
 <div class="orange-container">
   <header>
-    <h1>AfrikeList :</h1>
-    <h3>Orange Facture</h3>
+    <h1>AFRIKELIST :</h1>
+    <h3>Partners with Orange and Tigo</h3>
 
   </header>
 
@@ -26,12 +26,12 @@
        <h2> SIMULATION OF TRANSFER</h2> 
        </div>
        <div>              
-            Daily Conversion Rate: 1 USD = <span id="currency_rate"><%= get_fox_rate_for_usd%></span> XOF
+            Daily Conversion Rate: 1 USD = <span id="currency_rate"><%= get_fox_rate_for_usd%></span> FCFA
         </div>        
           <h2>Credit to be sent</h2>
            <span id="valid_usd"></span><br/>
           <input type="text" placeholder="USD" id="usd" name="payment_details[credits]" required="true"> USD <br/>      
-          <input type="text" placeholder="XOF" id="xof" readonly="readonly" value="<%= get_fox_rate_for_usd%>"> XOF <br/>         
+          <input type="text" placeholder="FCFA" id="xof" readonly="readonly" value="<%= get_fox_rate_for_usd%>"> FCFA <br/>         
        </div>
 
        <div>

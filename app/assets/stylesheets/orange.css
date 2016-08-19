@@ -15,9 +15,9 @@ body{
      }
 
      header h1{
-      margin-left: 48px; 
-      margin-top: 0px;
-      width: 250px;
+        margin-left: 48px;
+        margin-top: 0;
+        width: 250px;
      }
 
      .orange-container{
@@ -27,22 +27,20 @@ body{
       border-radius: 4px;
      }
      h1 {
-      color:black;
-      font-size: 41px;
-      font-weight:normal;
-      text-align: left;
-      margin-top: -7px;
+       color: black;
+      font-size: 34px;
+      font-weight: normal;
       padding-top: 12px;
+      text-align: left;
      }
      h3{
-      color:white;
-      font-size: 33px;
-      font-weight:normal;
-      text-align: center;
-      z-index: 10;
-      margin-top: -70px;
-      margin-left: 73px;
-
+          color: white;
+          font-size: 26px;
+          font-weight: normal;
+          margin-left: 73px;
+          margin-top: -60px;
+          text-align: center;
+          z-index: 10;
      }
 
      h2{
