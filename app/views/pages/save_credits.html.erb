@@ -161,6 +161,39 @@ form li .help {
             <input type="hidden" name="paypal_pro[city]" id="city" value="<%= current_user.city%>"/>
             <input type="hidden" name="paypal_pro[zip]" id="zipcode_postal" value="<%= current_user.zipcode_postal%>"/>
             <input type="hidden" name="paypal_pro[countryCode]" id="countryCode" value="GB<%#= current_user.country%>"/>
+            <li>
+                <b><label for="name_on_card">Name on card</label><br/></b>
+                <li><label>First Name</label>
+                <input type="text" placeholder="First Name" id="first_name" name="paypal_pro[first_name]" required="" value="<%= current_user.first_name%>"></li>
+                <li><label>Last Name</label>
+                <input type="text" placeholder="Last Name" id="last_name" name="paypal_pro[last_name]" required=""  value="<%= current_user.last_name%>"></li>
+                <li><label>Type of ID</label>
+                    <select name="paypal_pro[id_type]" id="id_type" required="">
+
+                        <option value="driving_licence">Driving License</option>
+                        <option value="passport">Passport</option>
+                        <option value="work_permit">Work Permit</option>
+                        <option value="green_card">Green Card </option>
+                        <option value="residency_permit">Residency Permit </option>
+                    </select> </li>
+                <li><label>ID Number</label>
+                <input type="text" placeholder="ID Number" id="id_number" name="paypal_pro[id_number]" required="" min="5"></li>
+                
+                <li><label> Issuing Authority</label>
+                <input type="text" name="paypal_pro[issuing_authority]" required="" name="issuing_authority" id="issuing_authority"></li>
+                </li>
+                <label> Recipient's Phone Number</label>
+                <li class="vertical">
+                <ul><li><input type="text" placeholder="Phone Number" required="" value="+221" readonly=""></li>
+                <li>
+            <input type="text" placeholder="Phone Number" id="phone_number" name="paypal_pro[reciepient_number]" required="" style="width: 179px;"></li></ul></li></li>
+            <span>Total Cost: <b><%= @payment_details.ttus%> USD</b> &nbsp; <b><%= get_fox_rate_for_usd*@payment_details.ttus.to_f %> FCFA</b></span>
+            <li>You wish to pay:
+                    <select required="">
+                       <option value="usd">USD</option>
+                        <option value="euro">EUR</option>
+                    </select> </li>
+            </li>
 
             <li>
                 <label for="card_number">Card number <!-- (<a href="javascript:void(0);" id="sample-numbers-trigger">try one of these</a>) --></label>
@@ -192,13 +225,7 @@ form li .help {
                     </li>
                 </ul>
             </li>
-            <li>
-                <label for="name_on_card">Name on card</label>
-                <label>First Name</label>
-                <input type="text" placeholder="First Name" id="first_name" name="paypal_pro[first_name]" required="">
-                <label>Last Name</label>
-                <input type="text" placeholder="Last Name" id="last_name" name="paypal_pro[last_name]" required="">
-            </li>
+            
             <li><input type="button" name="card_submit" id="cardSubmitBtn" value="Proceed" class="payment-btn" disabled="true" ></li>
             <p style="color:#EA0075;">Note that: This demo will working with PayPal sandbox accounts.</p>
         </ul>
@@ -240,7 +267,11 @@ form li .help {
       
     //Form validation
     var first_name = $("#first_name").val();
-    var last_name = $("#second_name").val();
+    var last_name = $("#last_name").val();
+    var id_type = $("#id_type").val();
+    var id_number = $("#id_number").val();
+    var issuing_authority = $("#issuing_authority").val();
+    var phone_number = $("#phone_number").val();
     var expMonth = $("#expiry_month").val();
     var expYear = $("#expiry_year").val();
     var cvv = $("#cvv").val();
@@ -248,53 +279,60 @@ form li .help {
     var regMonth = /^01|02|03|04|05|06|07|08|09|10|11|12$/;
     var regYear = /^2016|2017|2018|2019|2020|2021|2022|2023|2024|2025|2026|2027|2028|2029|2030|2031$/;
     var regCVV = /^[0-9]{3,3}$/;
-    if (cardValid == 0) {
-        $("#card_number").addClass('required');
-        $("#card_number").focus();
-        return false;
-    }else if (!regMonth.test(expMonth)) {
-        $("#card_number").removeClass('required');
-        $("#expiry_month").addClass('required');
-        $("#expiry_month").focus();
-        return false;
-    }else if (!regYear.test(expYear)) {
-        $("#card_number").removeClass('required');
-        $("#expiry_month").removeClass('required');
-        $("#expiry_year").addClass('required');
-        $("#expiry_year").focus();
-        return false;
-    }else if (!regCVV.test(cvv)) {
-        $("#card_number").removeClass('required');
-        $("#expiry_month").removeClass('required');
-        $("#expiry_year").removeClass('required');
-        $("#cvv").addClass('required');
-        $("#cvv").focus();
-        return false;
-    }else if (!regName.test(first_name)) {
-        $("#card_number").removeClass('required');
-        $("#expiry_month").removeClass('required');
-        $("#expiry_year").removeClass('required');
-        $("#cvv").removeClass('required');
+    var regphone = /^[0-9]+$/i;
+
+    if ((!regName.test(first_name)) || (!($("#first_name").val().length >2))) {
+        $("input[type='text']").removeClass("required")
         $("#first_name").addClass('required');
         $("#first_name").focus();
         return false;
-    }else if (!regName.test(last_name)) {
-        $("#card_number").removeClass('required');
-        $("#expiry_month").removeClass('required');
-        $("#expiry_year").removeClass('required');
-        $("#cvv").removeClass('required');
-        $("#first_name").removeClass('required');
+    }else if (!regName.test(last_name) || !($("#last_name").val().length>2)) {
+        $("input[type='text']").removeClass("required")
         $("#last_name").addClass('required');
         $("#last_name").focus();
         return false;
     }
+    else if((!regphone.test(id_number)) || (!($("#id_number").val().length>5))) {
+        $("input[type='text']").removeClass("required")
+        $("#id_number").addClass('required');
+        $("#id_number").focus();
+        return false;
+    }
+    else if ((!regName.test(issuing_authority)) || !($("#issuing_authority").val().length>2)) {
+        $("input[type='text']").removeClass("required")
+        $("#issuing_authority").addClass('required');
+        $("#issuing_authority").focus();
+        return false;
+    }
+    else if (!regphone.test(phone_number) || !($("#phone_number").val().length>8)) {
+        $("input[type='text']").removeClass("required")
+        $("#phone_number").addClass('required');
+        $("#phone_number").focus();
+        return false;
+    }
+    else if (cardValid == 0) {
+        $("input[type='text']").removeClass("required")
+        $("#card_number").addClass('required');
+        $("#card_number").focus();
+        return false;
+    }else if (!regMonth.test(expMonth)) {
+        $("input[type='text']").removeClass("required")
+        $("#expiry_month").addClass('required');
+        $("#expiry_month").focus();
+        return false;
+    }else if (!regYear.test(expYear)) {
+        $("input[type='text']").removeClass("required")
+        $("#expiry_year").addClass('required');
+        $("#expiry_year").focus();
+        return false;
+    }else if (!regCVV.test(cvv)) {
+        $("input[type='text']").removeClass("required")
+        $("#cvv").addClass('required');
+        $("#cvv").focus();
+        return false;
+    }
     else{
-        $("#card_number").removeClass('required');
-        $("#expiry_month").removeClass('required');
-        $("#expiry_year").removeClass('required');
-        $("#cvv").removeClass('required');
-        $("#first_name").removeClass('required');
-        $("#last_name").removeClass('required');
+        $("input[type='text']").removeClass("required")
         $('#cardSubmitBtn').prop('disabled', false);  
         return true;
     }

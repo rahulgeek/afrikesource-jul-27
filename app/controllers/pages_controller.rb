@@ -42,11 +42,12 @@ class PagesController < ApplicationController
 
   def paypal_pro
     @paypal_pro = PaypalPro.new.paypalCall(params[:paypal_pro])
-
+    binding.pry
     if success?
       @paypal_pro.merge!({"status"=>1})
       @transaction = TransactionDetail.find(params[:payment_id])
-      @transaction.update_attributes(:transaction_id=>@paypal_pro["TRANSACTIONID"].first)
+      params[:paypal_pro].merge!({:transaction_id=>@paypal_pro["TRANSACTIONID"].first})
+      @transaction.update_attributes(sanitize_params)
     end
     respond_to do |format|
       format.json { render json: @paypal_pro }
@@ -87,6 +88,12 @@ class PagesController < ApplicationController
 
   def paypal_pro_params
     params.require(:paypal_pro).permit(:creditCardType,:paymentAction,:amount,:currencyCode,:firstName,
-      :last_name,:creditCardNumber,:expMonth,:expYear,:cvv)
+      :last_name,:creditCardNumber,:expMonth,:expYear,:cvv,:creditCardType, :id_type,:id_number, :issuing_authority, 
+      :reciepient_number,:creditCardNumber,:expMonth,:expYear,:cvv,:transaction_id)
+  end
+
+  def sanitize_params
+    params.require(:paypal_pro).permit(:creditCardType,:paymentAction,:ttus,:creditCardNumber,:expMonth,:expYear,:cvv,:creditCardType, :id_type,:id_number, :issuing_authority, 
+      :reciepient_number,:creditCardNumber,:expMonth,:expYear,:cvv,:transaction_id)
   end
 end
