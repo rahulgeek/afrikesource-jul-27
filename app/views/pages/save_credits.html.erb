@@ -186,7 +186,7 @@ form li .help {
                 <li class="vertical">
                 <ul><li><input type="text" placeholder="Phone Number" required="" value="+221" readonly=""></li>
                 <li>
-            <input type="text" placeholder="Phone Number" id="phone_number" name="paypal_pro[reciepient_number]" required="" style="width: 179px;"></li></ul></li></li>
+            <input type="text" placeholder="Phone Number" id="phone_number" name="paypal_pro[reciepient_number]" required="" style="width: 179px;" maxlength="9"></li></ul></li></li>
             <span>Total Cost: <b><%= @payment_details.ttus%> USD</b> &nbsp; <b><%= get_fox_rate_for_usd*@payment_details.ttus.to_f %> FCFA</b></span>
             <li>You wish to pay:
                     <select required="">
