@@ -157,7 +157,6 @@ form li .help {
             
             <input type="hidden" name="paypal_pro[paymentAction]" id="paymentAction" value="Sale"/>
             <input type="hidden" name="paypal_pro[amount]" id="amount" value="<%= @payment_details.ttus%>"/>
-            <input type="hidden" name="paypal_pro[currencyCode]" id="currencyCode" value="<%= @payment_details.currencyCode%>"/>
             <input type="hidden" name="paypal_pro[city]" id="city" value="<%= current_user.city%>"/>
             <input type="hidden" name="paypal_pro[zip]" id="zipcode_postal" value="<%= current_user.zipcode_postal%>"/>
             <input type="hidden" name="paypal_pro[countryCode]" id="countryCode" value="GB<%#= current_user.country%>"/>
@@ -186,7 +185,17 @@ form li .help {
                 <li class="vertical">
                 <ul><li><input type="text" placeholder="Phone Number" required="" value="+221" readonly=""></li>
                 <li>
-            <input type="text" placeholder="Phone Number" id="phone_number" name="paypal_pro[reciepient_number]" required="" style="width: 179px;" maxlength="9"></li></ul></li></li>
+            <input type="text" placeholder="Phone Number" id="phone_number" name="paypal_pro[reciepient_number]" required="" style="width: 179px;" maxlength="9" onkeypress="return numbersonly(this, event)"></li></ul></li>
+
+            <span>Total Cost: <b><%= @payment_details.ttus%> USD</b> &nbsp; <b><%= get_fox_rate_for_usd*@payment_details.ttus.to_f %> FCFA</b></span>
+            <li>You wish to pay:
+                    <select required="" name="paypal_pro[currencyCode]">
+                       <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                    </select> </li>
+            </li>
+
+            </li>
             
 
             <li>
@@ -226,6 +235,39 @@ form li .help {
 <div id="orderInfo" style="display: none;"></div>
 
 <script type="text/javascript">
+   
+  function numbersonly(myfield, e)
+        {
+            var key;
+            var keychar;
+
+            if (window.event)
+                key = window.event.keyCode;
+            else if (e)
+                key = e.which;
+            else
+                return true;
+
+            keychar = String.fromCharCode(key);
+
+            // control keys
+            if ((key==null) || (key==0) || (key==8) || (key==9) || (key==13) || (key==27) )
+                return true;
+
+            // numbers
+            else if ((("0123456789").indexOf(keychar) > -1))
+                return true;
+
+            // only one decimal point
+            else if ((keychar == "."))
+            {
+                if (myfield.value.indexOf(keychar) > -1)
+                    return false;
+            }
+            else
+                return false;
+        }
+
     function cardFormValidate(){
     var cardValid = 0;
       
