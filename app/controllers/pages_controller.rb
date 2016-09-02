@@ -42,6 +42,7 @@ class PagesController < ApplicationController
 
   def paypal_pro
     @paypal_pro = PaypalPro.new.paypalCall(params[:paypal_pro])
+
     if success?
       @paypal_pro.merge!({"status"=>1})
       @transaction = TransactionDetail.find(params[:payment_id])
@@ -82,7 +83,7 @@ class PagesController < ApplicationController
   end
 
   def payment_details_params
-    params.require(:payment_details).permit(:credits,:user_table_id,:ttus)
+    params.require(:payment_details).permit(:credits,:user_table_id,:ttus,:currencyCode)
   end
 
   def paypal_pro_params

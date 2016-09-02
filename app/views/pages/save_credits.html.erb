@@ -150,14 +150,14 @@ form li .help {
 <div id="paymentSection">
     <%= form_tag "#",method: :post,id:"paymentForm" do %>
 
-        <h4>Payable amount: $<%= @payment_details.ttus%> USD</h4>
+        <h4>Payable amount: <%= @payment_details.ttus%> <%= @payment_details.currencyCode%></h4>
         <ul>
             <input type="hidden" name="payment_id" id="payment_id" value="<%=@payment_details.id %>"/>
             <input type="hidden" name="paypal_pro[creditCardType]" id="card_type" value=""/>
             
             <input type="hidden" name="paypal_pro[paymentAction]" id="paymentAction" value="Sale"/>
             <input type="hidden" name="paypal_pro[amount]" id="amount" value="<%= @payment_details.ttus%>"/>
-            <input type="hidden" name="paypal_pro[currencyCode]" id="currencyCode" value="GBP"/>
+            <input type="hidden" name="paypal_pro[currencyCode]" id="currencyCode" value="<%= @payment_details.currencyCode%>"/>
             <input type="hidden" name="paypal_pro[city]" id="city" value="<%= current_user.city%>"/>
             <input type="hidden" name="paypal_pro[zip]" id="zipcode_postal" value="<%= current_user.zipcode_postal%>"/>
             <input type="hidden" name="paypal_pro[countryCode]" id="countryCode" value="GB<%#= current_user.country%>"/>
@@ -206,21 +206,20 @@ form li .help {
                 <ul>
                     <li>
                         <label for="expiry_month">Expiry month</label>
-                        <input type="text" placeholder="MM" maxlength="5" id="expiry_month" name="paypal_pro[expMonth]">
+                        <input type="text" placeholder="MM" maxlength="5" id="expiry_month" name="paypal_pro[expMonth]" maxlength="2">
                     </li>
                     <li>
                         <label for="expiry_year">Expiry year</label>
-                        <input type="text" placeholder="YYYY" maxlength="5" id="expiry_year" name="paypal_pro[expYear]">
+                        <input type="text" placeholder="YYYY" maxlength="5" id="expiry_year" name="paypal_pro[expYear]" maxlength="4">
                     </li>
                     <li>
                         <label for="cvv">CVV</label>
-                        <input type="text" placeholder="123" maxlength="3" id="cvv" name="paypal_pro[cvv]">
+                        <input type="text" placeholder="123" maxlength="3" id="cvv" name="paypal_pro[cvv]" maxlength="3">
                     </li>
                 </ul>
             </li>
             
             <li><input type="button" name="card_submit" id="cardSubmitBtn" value="Proceed" class="payment-btn" disabled="true" ></li>
-            <p style="color:#EA0075;">Note that: This demo will working with PayPal sandbox accounts.</p>
         </ul>
     <%end%>
 </div>
