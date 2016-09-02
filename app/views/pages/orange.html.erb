@@ -43,6 +43,17 @@
         <h2>Total Transaction Cost</h2>
           <input type="text" placeholder="TTUS" id= "ttus" name="payment_details[ttus]" readonly="readonly">
        </div>
+       <div>
+        <h2>Total Cost:</h2>
+          <b><span id="total_cost_usd">0</span> USD</b> &nbsp; &nbsp;<b><span id="total_cost_fcfa">0</span> FCFA</b>
+       </div>
+            <div><h2>You wish to pay:</h2>
+                    <select required="">
+                       <option value="usd">USD</option>
+                        <option value="euro">EUR</option>
+                    </select>
+            </div>
+            <hr/>
         <div>
           <input type="submit" id="proceed" value="Proceed to Payment &nbsp; >>">
         </div>

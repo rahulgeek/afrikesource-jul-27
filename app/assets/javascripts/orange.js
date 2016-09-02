@@ -30,6 +30,8 @@ $(document).ready(function() {
   $("#xof").val((converted_currency.toLocaleString()))
   $("#ttus").val(ttus.toLocaleString())
   $("#fees").val((ttus-usd).toLocaleString())
+  $("#total_cost_usd").text(ttus)
+  $("#total_cost_fcfa").text(converted_currency.toLocaleString())
   }
 });
 });
