@@ -201,7 +201,6 @@ form li .help {
                     </ul>
                 </div> -->
                 <input type="text" placeholder="1234 5678 9012 3456" id="card_number" name="paypal_pro[creditCardNumber]" class="">
-                <small class="help">This demo supports Visa, American Express, Maestro, MasterCard and Discover.</small>
             </li>
             <li class="vertical">
                 <ul>
@@ -275,54 +274,45 @@ form li .help {
     var regCVV = /^[0-9]{3,3}$/;
     var regphone = /^[0-9]+$/i;
 
-    if ((!regName.test(first_name)) || (!($("#first_name").val().length >2))) {
+    if (!regName.test(first_name)){
         $("input[type='text']").removeClass("required")
         $("#first_name").addClass('required');
-        $("#first_name").focus();
         return false;
-    }else if (!regName.test(last_name) || !($("#last_name").val().length>2)) {
+    }else if (!regName.test(last_name)) {
         $("input[type='text']").removeClass("required")
         $("#last_name").addClass('required');
-        $("#last_name").focus();
         return false;
     }
-    else if((!regphone.test(id_number)) || (!($("#id_number").val().length>5))) {
+    else if(!regphone.test(id_number)) {
         $("input[type='text']").removeClass("required")
         $("#id_number").addClass('required');
-        $("#id_number").focus();
         return false;
     }
-    else if ((!regName.test(issuing_authority)) || !($("#issuing_authority").val().length>2)) {
+    else if (!regName.test(issuing_authority)) {
         $("input[type='text']").removeClass("required")
         $("#issuing_authority").addClass('required');
-        $("#issuing_authority").focus();
         return false;
     }
     else if (!regphone.test(phone_number) || !($("#phone_number").val().length>8)) {
         $("input[type='text']").removeClass("required")
         $("#phone_number").addClass('required');
-        $("#phone_number").focus();
         return false;
     }
     else if (cardValid == 0) {
         $("input[type='text']").removeClass("required")
         $("#card_number").addClass('required');
-        $("#card_number").focus();
         return false;
     }else if (!regMonth.test(expMonth)) {
         $("input[type='text']").removeClass("required")
         $("#expiry_month").addClass('required');
-        $("#expiry_month").focus();
         return false;
     }else if (!regYear.test(expYear)) {
         $("input[type='text']").removeClass("required")
         $("#expiry_year").addClass('required');
-        $("#expiry_year").focus();
         return false;
     }else if (!regCVV.test(cvv)) {
         $("input[type='text']").removeClass("required")
         $("#cvv").addClass('required');
-        $("#cvv").focus();
         return false;
     }
     else{

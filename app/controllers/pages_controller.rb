@@ -42,7 +42,6 @@ class PagesController < ApplicationController
 
   def paypal_pro
     @paypal_pro = PaypalPro.new.paypalCall(params[:paypal_pro])
-    binding.pry
     if success?
       @paypal_pro.merge!({"status"=>1})
       @transaction = TransactionDetail.find(params[:payment_id])
