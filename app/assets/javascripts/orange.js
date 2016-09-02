@@ -11,6 +11,8 @@ $(document).ready(function() {
   	 	$("#xof").val(0)
   		$("#ttus").val(0)
   		$("#fees").val(0)
+      $("#total_cost_usd").text(0)
+      $("#total_cost_fcfa").text(0)
   }
   else
   {
