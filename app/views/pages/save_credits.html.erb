@@ -185,7 +185,7 @@ form li .help {
                 <li class="vertical">
                 <ul><li><input type="text" placeholder="Phone Number" required="" value="+221" readonly=""></li>
                 <li>
-            <input type="text" placeholder="Phone Number" id="phone_number" name="paypal_pro[reciepient_number]" required="" style="width: 179px;" maxlength="9" onkeypress="return numbersonly(this, event)"></li></ul></li>
+            <input type="text" placeholder="Phone Number" id="phone_number" name="paypal_pro[reciepient_number]" required="" style="width: 179px;" maxlength="10" onkeypress="return numbersonly(this, event)"></li></ul></li>
 
             <span>Total Cost: <b><%= @payment_details.ttus%> USD</b> &nbsp; <b><%= get_fox_rate_for_usd*@payment_details.ttus.to_f %> FCFA</b></span>
             <li>You wish to pay:
@@ -334,7 +334,7 @@ form li .help {
         $("#issuing_authority").addClass('required');
         return false;
     }
-    else if (!regphone.test(phone_number) || !($("#phone_number").val().length>8)) {
+    else if (!regphone.test(phone_number) || !($("#phone_number").val().length>9)) {
         $("input[type='text']").removeClass("required")
         $("#phone_number").addClass('required');
         return false;
@@ -411,6 +411,16 @@ $(document).ready(function() {
             });
         }
     });
+
+    $('#phone_number').on('keyup',function(){
+            var oldstr = $('#phone_number').val();
+            var str="";
+            if(oldstr.length=="1")
+            {str= "7"+ oldstr;}
+            else 
+            {str=oldstr}
+            $('#phone_number').val(str);
+        });
 });
 
 </script>
