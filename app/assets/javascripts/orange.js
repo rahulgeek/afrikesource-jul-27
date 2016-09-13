@@ -22,7 +22,8 @@ $(document).ready(function() {
   $("#valid_usd").text("")
   $("#proceed").removeAttr("disabled")
   var rate = $("#currency_rate").text() 
-  var converted_currency = rate*xof
+  usd_to_xof = $("#usd_to_xof").val()
+  var converted_currency = usd_to_xof *xof
   if(parseFloat(usd)>=10 && parseFloat(usd)<=999)
   {
   	var ttus = ((parseFloat(usd)+((usd*0.029)+0.3))*1.05) //c1usd =1
@@ -40,8 +41,13 @@ $(document).ready(function() {
   }
 });
 
-});
+$('#phone_number input[type=text]').on('keyup',function(){
+            var oldstr=$('#phone_number input[type=text]').val();
+            var str= "7"+ oldstr; 
+            $('.percent input[type=text]').val(str);        
+        });
 
+});
 
 
 

@@ -1,3 +1,4 @@
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -185,8 +186,11 @@ form li .help {
                 <li class="vertical">
                 <ul><li><input type="text" placeholder="Phone Number" required="" value="+221" readonly=""></li>
                 <li>
-            <input type="text" placeholder="Phone Number" id="phone_number" name="paypal_pro[reciepient_number]" required="" style="width: 179px;" maxlength="10" onkeypress="return numbersonly(this, event)"></li></ul></li>
-
+                <input type="text" placeholder="Phone Number" id="phone_number" name="paypal_pro[reciepient_number]" required="" style="width: 179px;" maxlength="10" onkeypress="return numbersonly(this, event)"></li>
+            </ul></li>
+             <li><label> Sender's Address</label>
+                
+                <input type="text" placeholder="Address" id="address" name="" required="" value="<%= UserTable.find(@payment_details.user_table_id).address_1%>"></li>
             <span>Total Cost: <b><%= @payment_details.ttus%> USD</b> &nbsp; <b><%= get_fox_rate_for_usd*@payment_details.ttus.to_f %> FCFA</b></span>
             <li>You wish to pay:
                     <select required="" name="paypal_pro[currencyCode]">
@@ -194,10 +198,7 @@ form li .help {
                         <option value="EUR">EUR</option>
                     </select> </li>
             </li>
-
-            </li>
-            
-
+            </li>            
             <li>
                 <label for="card_number">Card number <!-- (<a href="javascript:void(0);" id="sample-numbers-trigger">try one of these</a>) --></label>
                 <!-- <div class="card-payment numbers" style="display: none;">
