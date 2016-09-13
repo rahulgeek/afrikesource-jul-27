@@ -29,10 +29,10 @@
             Daily Conversion Rate: 1 USD = <span id="currency_rate"><%= get_fox_rate_for_usd%></span> FCFA
         </div>        
           <h2>Credit to be sent</h2>
-            <span id="valid_usd"></span><br/>
-          <input type="text" placeholder="FCFA" id="xof" value="1"> <label><span style="margin-left: 9px;">Amount in FCFA your recipient</span> <br/>in Senegal will receive</label><br/>
+          <input type="text" placeholder="FCFA" id="xof"> <label><span style="margin-left: 9px;">Amount in FCFA your recipient</span> <br/>in Senegal will receive</label><br/>
           <input type="hidden" name="" id="usd_to_xof" value="<%= get_usd_rate_for_fox%>">
-          <input type="text" placeholder="USD" id="usd" name="payment_details[credits]" required="true"  readonly="readonly" value="<%= get_usd_rate_for_fox%>"><label><span style="margin-left: 9px;">Amount in USD you wish to send </span> <br/><span style="font-size: 10px;">(if you are a holder of a European Credit Card, you will be able to pay in Euros as well) </span></label>  <br/>             
+          <span id="valid_usd"></span><br/>
+          <input type="text" placeholder="USD" id="usd" name="payment_details[credits]" required="true"  readonly="readonly"><label><span style="margin-left: 9px;">Amount in USD you wish to send </span> <br/><span style="font-size: 10px;">(if you are a holder of a European Credit Card, you will be able to pay in Euros as well) </span></label>  <br/>             
        </div>
 
        <div>
