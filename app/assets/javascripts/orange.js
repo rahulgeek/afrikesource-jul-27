@@ -4,8 +4,9 @@ $(document).ready(function() {
   var xof = $("#xof").val()
   usd_to_xof = $("#usd_to_xof").val()
   var converted_currency = usd_to_xof *xof    
-  $("#usd").val((converted_currency))
-  if(parseFloat(converted_currency)<10)
+  round_us = Math.round(converted_currency * 100)/100;
+  $("#usd").val((round_us))
+  if(parseFloat(converted_currency.toLocaleString())<10)
   	{$("#valid_usd").text("no less than 10$ can be entered")
   	$("#proceed").attr("disabled","true")
   }
@@ -34,9 +35,10 @@ $(document).ready(function() {
   {
   	var ttus = ((parseFloat(usd)+((usd*0.029)+0.3))*1.035) //c1usd =1
   }
-
-  $("#ttus").val(ttus.toLocaleString())
-  $("#fees").val((ttus-usd).toLocaleString())
+  round_ttus = Math.round(ttus * 100)/100;
+  $("#ttus").val(round_ttus.toLocaleString())
+  round_fees = Math.round(((ttus-usd)) * 100)/100;
+  $("#fees").val((round_fees).toLocaleString())
   // $("#total_cost_usd").text(ttus)
   // $("#total_cost_fcfa").text(converted_currency.toLocaleString())
   }
