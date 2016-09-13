@@ -158,9 +158,6 @@ form li .help {
             
             <input type="hidden" name="paypal_pro[paymentAction]" id="paymentAction" value="Sale"/>
             <input type="hidden" name="paypal_pro[amount]" id="amount" value="<%= @payment_details.ttus%>"/>
-            <input type="hidden" name="paypal_pro[city]" id="city" value="<%= current_user.city%>"/>
-            <input type="hidden" name="paypal_pro[zip]" id="zipcode_postal" value="<%= current_user.zipcode_postal%>"/>
-            <input type="hidden" name="paypal_pro[countryCode]" id="countryCode" value="GB<%#= current_user.country%>"/>
             <li>
                 <b><label for="name_on_card">Name on card</label><br/></b>
                 <li><label>First Name</label>
@@ -188,9 +185,19 @@ form li .help {
                 <li>
                 <input type="text" placeholder="Phone Number" id="phone_number" name="paypal_pro[reciepient_number]" required="" style="width: 179px;" maxlength="10" onkeypress="return numbersonly(this, event)"></li>
             </ul></li>
-             <li><label> Sender's Address</label>
-                
-                <input type="text" placeholder="Address" id="address" name="" required="" value="<%= UserTable.find(@payment_details.user_table_id).address_1%>"></li>
+             <li><label> Street</label>
+                <input type="text" placeholder="Street" id="address" required="" name="paypal_pro[street]"  value="<%= current_user.street%>">
+                <label> City</label>
+                <input type="text" name="paypal_pro[city]" id="city" value="<%= current_user.city%>" required="" />
+                <label> Zip</label>
+                 <input type="text" name="paypal_pro[zip]" id="zipcode_postal" value="<%= current_user.zipcode_postal%>" required="" />
+                 <label> State</label>
+                <input type="text" name="paypal_pro[state]" id="zipcode_postal" value="<%= current_user.state%>" required="" />
+                <label> Country</label>
+                <input type="text" name="paypal_pro[countryCode]" id="countryCode" value="<%= current_user.country%>" required=""/>
+
+                </li>
+
             <span>Total Cost: <b><%= @payment_details.ttus%> USD</b> &nbsp; <b><%= get_fox_rate_for_usd*@payment_details.ttus.to_f %> FCFA</b></span>
             <li>You wish to pay:
                     <select required="" name="paypal_pro[currencyCode]">
