@@ -413,7 +413,7 @@ $(document).ready(function() {
                     }else{
                         $('#paymentSection').slideUp('slow');
                         $('#orderInfo').slideDown('slow');
-                        $('#orderInfo').html('<p>Wrong card details given, please try again.</p>');
+                        $('#orderInfo').html('<p>'+data.L_LONGMESSAGE0+'</p>');
                     }
                 }
             });

@@ -9,10 +9,11 @@ class PaypalPro
                   :ackSuccess,:ackSuccessWarning
     
     def initialize 
-     @apiUsername = 'moyadevijayshree-facilitator_api1.gmail.com'
-     @apiPassword = '9PFX5HK88N72U4JX'
-     @apiSignature = 'An5ns1Kso7MWUdW4ErQKJJJ4qi4-AH9Uh0JQ6Y77SnkyaikoHHdJhadp'
-     @apiEndpoint = 'https://api-3t.sandbox.paypal.com/nvp'
+     @apiUsername = 'abdul.sene_api1.afrikelist.com'
+     @apiPassword = '4VB329RT6HR3H5WR'
+     @apiSignature = 'AFcWxV21C7fd0v3bYYYRCpSSRl31AXH.Vbceldnrl03jXtDaSL38YBAE'
+     @apiEndpoint = "https://api-3t.paypal.com/nvp"
+     #@apiEndpoint = 'https://api-3t.sandbox.paypal.com/nvp'
      @subject = ''
      @authToken = ''
      @authSignature = ''
@@ -20,7 +21,7 @@ class PaypalPro
      @useProxy = FALSE
      @proxyHost = '127.0.0.1'
      @proxyPort = 808
-     @paypalURL = 'https://www.sandbox.paypal.com/webscr&cmd=_express-checkout&token='
+     @paypalURL = 'https://www.paypal.com/webscr&cmd=_express-checkout&token='
      @version = '65.1'
      @ackSuccess = 'SUCCESS'
      @ackSuccessWarning = 'SUCCESSWITHWARNING'
