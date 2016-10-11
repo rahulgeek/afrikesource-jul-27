@@ -88,7 +88,7 @@ class PaypalPro
 
 def paypal_url(return_path,transaction_id,amount)
     values = {
-        business: 'abdul.sene_api1.afrikelist.com',
+        business: 'alioune.ndiaye@afrikelist.com',
         cmd: "_xclick",
         upload: 1,
         return: "#{Rails.application.secrets.app_host}#{return_path}",
