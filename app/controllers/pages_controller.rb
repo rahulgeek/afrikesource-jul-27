@@ -38,7 +38,6 @@ class PagesController < ApplicationController
 
   def save_credits
     @payment_details = current_user.transaction_details.create(payment_details_params)
-    binding.pry
     @paypal_pro = PaypalPro.new
     #@transaction = TransactionDetail.find(params[:payment_id])
     session["transaction_id"] = @payment_details.id
