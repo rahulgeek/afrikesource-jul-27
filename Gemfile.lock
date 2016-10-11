@@ -39,6 +39,11 @@ GEM
     activejob (4.2.5)
       activesupport (= 4.2.5)
       globalid (>= 0.3.0)
+    activemerchant (1.60.0)
+      activesupport (>= 3.2.14, < 5.1)
+      builder (>= 2.1.2, < 4.0.0)
+      i18n (>= 0.6.9)
+      nokogiri (~> 1.4)
     activemodel (4.2.5)
       activesupport (= 4.2.5)
       builder (~> 3.1)
@@ -216,6 +221,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activemerchant
   autoprefixer-rails
   bcrypt (~> 3.1.7)
   blueimp-gallery!
@@ -251,4 +257,4 @@ DEPENDENCIES
   wice_grid (~> 3.6.0.pre5)
 
 BUNDLED WITH
-   1.12.5
+   1.13.1

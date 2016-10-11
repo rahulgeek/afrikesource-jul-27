@@ -407,13 +407,11 @@ $(document).ready(function() {
                 },
                 success:function(data){
                     if (data.status == 1) {
-                        $('#paymentSection').slideUp('slow');
-                        $('#orderInfo').slideDown('slow');
-                        $('#orderInfo').html('<p>Order <span>#'+data.TRANSACTIONID[0]+'</span> has been submitted successfully.</p><br/> <button style="margin-left: 114px; width: 71px; height: 42px;" onclick="window.location = \'/\'">Ok</button>');
+                        window.location = data.url;
                     }else{
                         $('#paymentSection').slideUp('slow');
                         $('#orderInfo').slideDown('slow');
-                        $('#orderInfo').html('<p>'+data.L_LONGMESSAGE0+'</p>');
+                        $('#orderInfo').html('<p>'+"Something went wrong"+'</p>');
                     }
                 }
             });

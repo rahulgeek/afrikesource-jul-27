@@ -38,23 +38,28 @@ class PagesController < ApplicationController
 
   def save_credits
     @payment_details = current_user.transaction_details.create(payment_details_params)
+    binding.pry
+    @paypal_pro = PaypalPro.new
+    #@transaction = TransactionDetail.find(params[:payment_id])
+    session["transaction_id"] = @payment_details.id
+    redirect_to @paypal_pro.paypal_url(paypal_callback_path,@payment_details.id,params["payment_details"]["ttus"])
   end
 
-  def paypal_pro
-    @paypal_pro = PaypalPro.new.paypalCall(params[:paypal_pro])
-    if success?
-      @paypal_pro.merge!({"status"=>1})
-      @transaction = TransactionDetail.find(params[:payment_id])
-      params[:paypal_pro].merge!({:transaction_id=>@paypal_pro["TRANSACTIONID"].first})
-      @transaction.update_attributes(sanitize_params)
-    end
-    respond_to do |format|
-      format.json { render json: @paypal_pro }
+  # def paypal_pro
+
+  # end
+
+  def paypal_callback
+    params.permit! # Permit all Paypal input params
+    status = params[:payment_status]
+    if status == "Completed"
+      @message= "Transaction successful"
+    else
+      @message = "Last Transaction cancelled due to some internal error"
     end
   end
 
-  def change_lang
-    
+  def change_lang    
     if request.referer.nil?
       refer = root_url
     else
